@@ -1,0 +1,19 @@
+<div class="lightbox api-box" id="api-connect">
+    <form ng-submit="connectVendor()" class="api-form">
+        <span class="integration-error"></span>
+        <input type="hidden" id="vendorReferenceName" value="maropost">
+        <input type="hidden" id="integrationId" ng-model="input.integrationId">
+        <div class="label-text">
+            <label for="username">Enter Account ID:</label>
+        </div>
+        <div class="form-input"><input type="text" class="input" placeholder="Account ID here" id="username" ng-model="input.username"></div>
+        <div class="label-text">
+            <label for="api">Enter API key:</label>
+        </div>
+        <div class="form-input"><input type="text" class="input" placeholder="API key here" id="apiKey" ng-model="input.apiKey"></div>
+        <div class="form-button">
+            <input type="submit" class="button-connect" value="Connect">
+            <span class="help-text">Need help? How to connect with Maropost. <a href="http://help.leadquizzes.com/article/18-maropost" target="_h">Click Here</a></span>
+        </div>
+    </form>
+</div>

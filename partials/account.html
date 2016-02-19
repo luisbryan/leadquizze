@@ -1,0 +1,120 @@
+<style>
+	.saveSuccess {
+		font-weight: bold;
+		color: #9FF781;
+		float: left;
+		display: inline-block;
+	}
+</style>
+
+<div id="main" class="same-height">
+    <aside id="sidebar" class="same">
+        <a href="#" class="nav-opener"><span class="icon icon-arrow-bottom"></span></a>
+        <div class="holder">
+            <div class="logo"><a href="/"><img src="/images/logo.png" height="21" width="185" alt="Lead Quizzes" class="logo-large"><img src="/images/logo-small.png" alt="Lead Quizzes" class="logo-small"></a></div>
+            <div class="nav-section" ng-controller="navigation" ng-include="navigation()"></div>
+        </div>
+    </aside>
+    <div class="user-section" ng-controller="user" ng-include="user()"></div>
+	<div id="content" class="same">
+		<header class="page-heading">
+			<div class="right-block">
+				<a href="http://help.leadquizzes.com" target="_h" class="link">Help &amp; Support</a>
+			</div>
+			<h1>Profile Settings <small>/&nbsp; Change your login credentials or subscription plan</small></h1>
+		</header>
+		<div class="dash-content profile-setting">
+			<form class="profile-setting-form validate-form create-form">
+				<div class="form-section">
+					<div class="form-row">
+						<div ng-include="'partials/alert.html'"></div>
+					</div>
+				</div>
+			</form>
+			<form ng-if="!isAdmin" ng-submit="updatePassword()" class="profile-setting-form validate-form create-form">
+				<div class="form-section">
+					<div class="form-row">
+						<div class="label-text"><label for="opass">Company Logo:</label></div>
+						<div class="form-input">
+							<span ng-if="!$root.userLogo">No Logo Uploaded</span>
+							<img ng-if="$root.userLogo" ng-src="/images/uploads/logos/{{$root.userLogo}}">
+						</div>
+					</div>
+					<div class="form-button">
+						<div class="saveSuccess left" ng-if="logoSaveSuccess">Saved</div>
+						<a dropzone="dropzoneConfig" style="cursor: pointer; text-align: center; border-radius: 0px;" class="button-default uploadLogo right">Upload Your Logo</a>
+					</div>
+					<div class="form-row">
+						<div style="font-size: 10px; vertical-align: top; float: right;">(must be 251 × 28)</div>
+					</div>
+				</div>
+			</form>
+			<form ng-if="!isAdmin" name="userInfoForm" ng-submit="updateUser()" class="profile-setting-form validate-form create-form">
+				<div class="form-section">
+					<div class="form-row">
+						<div class="label-text"><label for="fname">Full Name:</label></div>
+						<div class="form-input">
+							<input type="text" class="input required" id="fname" placeholder="" ng-model="input.name">
+							<span class="error-message">You need to enter a name</span>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="label-text"><label for="email">Email Address:</label></div>
+						<div class="form-input">
+							<input name="email" type="email" class="input required-email" id="email" placeholder="" ng-model="input.email" required>
+							<span class="error-message">You need to enter a valid email address</span>
+							<span class="error" ng-show="userInfoForm.email.$error.email">Not valid email!</span>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="label-text"><label for="fname">Company URL</label></div>
+						<div class="form-input">
+							<input type="text" class="input required" id="fname" placeholder="" ng-model="input.website">
+							<span class="error-message">You need to enter a website URL</span>
+						</div>
+					</div>
+					<div class="form-button">
+						<div class="saveSuccess left" ng-if="infoSaveSuccess">Saved</div>
+						<input type="submit" class="button-default right" value="Save Information">
+					</div>
+				</div>
+			</form>
+			<form ng-submit="updatePassword()" class="profile-setting-form validate-form create-form">
+				<div class="form-section">
+					<div class="form-row">
+						<div class="label-text"><label for="opass">Old Password:</label></div>
+						<div class="form-input">
+							<input type="password" class="input" id="opass" placeholder="" ng-model="input.oldpass">
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="label-text"><label for="newpass">New Password:</label></div>
+						<div class="form-input">
+							<input type="password" class="input" id="newpass" ng-model="input.newpass">
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="label-text"><label for="newpass2"> Repeat New Password:</label></div>
+						<div class="form-input">
+							<input type="password" class="input" id="newpass2" ng-model="input.newpass2">
+						</div>
+					</div>
+					<div class="form-button">
+						<div class="saveSuccess left" ng-if="pwdSaveSuccess">Saved</div>
+						<input type="submit" class="button-default right" value="Update Password">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div id="template-container" style="display: none;">
+	<div class="dz-preview dz-file-preview">
+	  <div class="dz-details">
+	    <img data-dz-thumbnail />
+	  </div>
+	  <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
+	  <div class="dz-error-message"><span data-dz-errormessage></span></div>
+	</div>
+</div>

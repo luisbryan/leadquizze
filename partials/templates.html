@@ -1,0 +1,78 @@
+<div id="main" class="same-height">
+    <aside id="sidebar" class="same">
+        <a href="#" class="nav-opener"><span class="icon icon-arrow-bottom"></span></a>
+        <div class="holder">
+            <div class="logo"><a href="/"><img src="/images/logo.png" height="21" width="185" alt="Lead Quizzes" class="logo-large"><img src="/images/logo-small.png" alt="Lead Quizzes" class="logo-small"></a></div>
+            <div class="nav-section" ng-controller="navigation" ng-include="navigation()"></div>
+        </div>
+    </aside>
+    <div class="user-section" ng-controller="user" ng-include="user()"></div>
+	<div id="content" class="same">
+		<header class="page-heading">
+			<div class="right-block">
+				<a href="http://help.leadquizzes.com" target="_h" class="link">Help &amp; Support</a>
+			</div>
+			<h1>Templates <small>/&nbsp; Choose a quiz template that best matches your needs</small></h1>
+		</header>
+		<div class="dash-content template-content">
+			<header class="status-header">
+				<strong class="title">Industry Specific:</strong>
+				<div class="button-holder">
+					<div class="left-block">
+						<select jcf class="input" ng-options="industry as industry.industry for industry in industries" ng-model="input.industry">
+							<option value="">All</option>
+						</select>
+					</div>
+				</div>
+			</header>
+			<div class="stat-section template-view">
+				<div class="quiz-row">
+					<div ng-repeat="quiz in quizzes" style="background-image: url('images/{{quiz.imageId}}');background-size: cover;background-position: 50% 50%;height: 228px;" class="quiz-card" ng-repeat="quiz in quizzes" data-quizId="{{quiz.quizId}}" data-quizIndustry="{{quiz.segmentid}}">
+						<div class="overlay">
+							<div class="button-holder">
+								<div class="button-group">
+									<a href="https://quiz.leadquizzes.com/q/{{quiz.quizLink}}" target="_qt" class="button-finish">Preview</a>
+									<a style="cursor: pointer;" ng-click="useTemplate(quiz.quizId)" class="button-finish">Use Quiz</a>
+								</div>
+							</div>
+							<div class="text-block">
+								<strong class="title">{{quiz.title}}</strong>
+								<p>{{quiz.description}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="popup-holder">
+	<div class="share-quiz-box lightbox" id="build-template">
+		<form class="quiz-title-form create-form validate-form" action="#" novalidate="novalidate">
+			<div class="form-row">
+				<div class="label-text">
+					<label for="qname">Quiz Name:</label>
+				</div>
+				<div class="form-input">
+					<input type="text" id="qname"  class="input" placeholder="Enter name here">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="label-text"><label for="ind">Select Industry:</label></div>
+				<div class="form-input">
+					<div class="select-holder">
+						<select class="input" id="ind">
+							<option value="val">Select Industry</option>
+							<option value="val">Select Industry</option>
+							<option value="val">Select Industry</option>
+							<option value="val">Select Industry</option>
+						</select>
+					</div>
+					<div class="button-holder">
+						<input type="submit" class="button-share" value="Build a Template">
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,38 @@
+<div class="w1">
+	<header id="header" class="style2">
+		<div class="container">
+			<a href="http://help.leadquizzes.com" target="_h" class="support-link">Help &amp; Support</a>
+			<div class="logo"><a href="/"><img src="/images/logo.png" height="21" width="185" alt="Lead Quizzes"></a></div>
+		</div>
+	</header>
+	<div id="main">
+		<div class="vertical-block">
+			<div class="login-block forgot-block">
+				<header>
+					<h1>Forgot Password?</h1>
+					<span class="subtitle">Enter your Email to reset your password</span>
+				</header>
+				<form ng-submit="forgot()" class="login-form login-box validate-form">
+					<div class="form-row">
+                        <div ng-include="'partials/alert.html'"></div>
+                    </div>
+					<div class="form-row" ng-if="!emailSent">
+						<div class="label-text"><label for="email">Email:</label></div>
+						<div class="form-input">
+							<input type="email" class="input required-email" id="email" placeholder="Your Email Address" ng-model="input.email">
+							<span class="error-message">You need to enter a valid email</span>
+						</div>
+					</div>
+					<div class="form-row" ng-if="emailSent">
+						An email has been sent with a link to reset your password. The link will only be valid for 10 minutes
+					</div>
+					<div class="button-block">
+						<input ng-if="!emailSent" type="submit" class="button-submit" value="Recover Password">
+						<strong class="forgot-text"><span>or</span> <a href="login">Log In</a> if you know your password</strong>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<footer id="footer" ng-controller="footer" ng-include="footer()"></footer>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=1024" />
+	<title>Lead Quizzes</title>
+	<link media="all" rel="stylesheet" href="css/style.css">
+	<link media="all" rel="stylesheet" href="css/dropzone.min.css">
+</head>
+<body class="inner">
+	<div id="wrapper">
+		<div id="main">
+			<aside id="sidebar">
+				<a href="#" class="nav-opener"><span class="icon icon-arrow-bottom"></span></a>
+				<div class="holder">
+					<div class="logo"><a href="/"><img src="/images/logo.png" height="21" width="185" alt="Lead Quizzes" class="logo-large"><img src="/images/logo-small.png" alt="Lead Quizzes" class="logo-small"></a></div>
+					<div class="nav-section">
+						<nav class="navigation">
+							<ul class="nav">
+								<li><a href="create-quiz.html"><span class="icon icon-view-thumb"></span> <span class="menu-text">Create Quiz</span></a></li>
+								<li><a href="quiz-title.html"><span class="icon icon-pencil"></span> <span class="menu-text">Configure</span></a></li>
+								<li><a href="outcomes.html"><span class="icon icon-sitemap"></span> <span class="menu-text">Outcomes</span></a></li>
+								<li><a href="questions.html"><span class="icon icon-view-list"></span> <span class="menu-text">Questions</span></a></li>
+								<li><a href="lead-capture.html"><span class="icon icon-users"></span> <span class="menu-text">Leads</span></a></li>
+								<li class="active"><a href="create-offer.html"><span class="icon icon-tag"></span> <span class="menu-text">Offer</span></a></li>
+								<li><a href="review-publish.html"><span class="icon icon-plane"></span> <span class="menu-text">Review &amp; Publish</span></a></li>
+							</ul>
+							<ul class="nav add">
+								<li><a href="dashboard-admin.html"><span class="icon icon-dashboard"></span> <span class="menu-text">Dashboard</span></a></li>
+								<li><a href="templates.html"><span class="icon icon-layout"></span> <span class="menu-text">Templates</span></a></li>
+								<li><a href="profile-page.html"><span class="icon icon-person"></span> <span class="menu-text">My Account</span></a></li>
+							</ul>
+						</nav>
+					</div>
+					<div class="user-section">
+						<a href="#" class="user-profile has-no-image">
+							<span class="icon icon-plus"></span>
+						</a>
+						<span class="welcome-text">Welcome: <strong class="name">Jenifer James</strong></span>
+						<span class="logout-link"><a href="/">Log Out</a></span>
+					</div>
+				</div>
+			</aside>
+			<div id="content">
+				<header class="page-heading">
+					<a href="#" class="link">Help &amp; Support</a>
+					<h1>Create Offer <small>/&nbsp; Describe your offer to pitch to leads after they receive the results.</small></h1>
+				</header>
+				<div class="content-body">
+					<form action="/uploads" class="create-offer-form create-form validate-form">
+						<div class="switch-row">
+							<div class="switch-label">Enable Offer:</div>
+							<div class="switch-menu">
+								<input type="checkbox" hidden="hidden" id="vis">
+								<label class="switch" for="vis"></label>
+								<span class="label enable">On</span>
+								<span class="label disable">Off</span>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-input">
+								<select class="offer-select-input">
+									<option value="0">Select Offer Type</option>
+									<option value="tab1">Text Offer with CTA</option>
+									<option value="tab2">Image Offer</option>
+									<option value="tab3">Image Offer with Headline and CTA</option>
+								</select>
+							</div>
+						</div>
+						<div class="tab-content">
+							<div id="tab1" class="closed">
+								<div class="form-row">
+									<div class="label-text">
+										<label for="headline1">*Form Headline:</label>
+									</div>
+									<div class="form-input">
+										<input type="text" class="input required" placeholder="Invest in your health with 30 day paleo guide" id="headline1" data-max-length="100">
+										<span class="error-message">You need to enter headline</span>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="label-text">
+										<span class="counter">0/500</span>
+										<label for="description1">*Form Description:</label>
+									</div>
+									<div class="form-input">
+										<textarea id="description1" cols="3" rows="1" class="input-text required ti1" data-max-length="500"></textarea>
+										<span class="error-message">You need to enter description</span>
+									</div>
+								</div>
+								<div class="two-columns">
+									<div class="form-row">
+										<div class="column">
+											<div class="label-text"><label for="action-label1">Call to action Label:</label></div>
+											<div class="form-input">
+												<select id="action-label1" class="input">
+													<option value="value">Learn More</option>
+													<option value="value">Buy Now</option>
+													<option value="value">Visit Page</option>
+												</select>
+											</div>
+										</div>
+										<div class="column">
+											<div class="label-text"><label for="action-url1">Call to Action URL:</label></div>
+											<div class="form-input">
+												<input type="text" class="input" placeholder="Enter URL" id="action-url1">
+											</div>
+										</div>
+									</div>
+									<div class="form-row full-imd">
+										<div class="column">
+											<div class="label-text"><label for="map-outcome1">Map to Outcome:</label></div>
+											<div class="form-input">
+												<select id="map-outcome1" class="input">
+													<option value="value">Learn More</option>
+													<option value="value">Buy Now</option>
+													<option value="value">Visit Page</option>
+												</select>
+											</div>
+										</div>
+										<div class="column button-column">
+											<input type="submit" class="button-submit" value="Save and Create New Offer">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="tab2" class="closed">
+								<div class="file-drop-section">
+									<div class="label-text">
+										<span class="label">*Ad Image File:</span>
+									</div>
+									<div class="drop-box">
+										<span class="icon-upload">Upload Icon</span>
+										<strong class="title">Drop Image to Upload</strong>
+										<span>or <a href="/">click here</a></span>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="label-text">
+										<label for="url">URL:</label>
+									</div>
+									<div class="form-input"><input type="text" class="input" placeholder="Paste URL here" id="url"></div>
+								</div>
+								<div class="two-columns">
+									<div class="form-row full-imd">
+										<div class="column">
+											<div class="label-text"><label for="map-outcome2">Map to Outcome:</label></div>
+											<div class="form-input">
+												<select id="map-outcome2" class="input">
+													<option value="value">Learn More</option>
+													<option value="value">Buy Now</option>
+													<option value="value">Visit Page</option>
+												</select>
+											</div>
+										</div>
+										<div class="column button-column">
+											<input type="submit" class="button-submit" value="Save and Create New Offer">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="tab3" class="closed">
+								<div class="file-drop-section">
+									<div class="label-text">
+										<span class="counter">0/100</span>
+										<span class="label">*Ad Image File:</span>
+									</div>
+									<div class="drop-box">
+										<span class="icon-upload">Upload Icon</span>
+										<strong class="title">Drop Image to Upload</strong>
+										<span>or <a href="/">click here</a></span>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="label-text">
+										<label for="headline3">*Form Headline:</label>
+									</div>
+									<div class="form-input">
+										<input type="text" class="input required" placeholder="Invest in your health with 30 day paleo guide" id="headline3">
+										<span class="error-message">You need to enter headline</span>
+									</div>
+								</div>
+								<div class="two-columns">
+									<div class="form-row">
+										<div class="column">
+											<div class="label-text"><label for="action-label2">Call to action Label:</label></div>
+											<div class="form-input">
+												<select id="action-label2" class="input">
+													<option value="value">Learn More</option>
+													<option value="value">Buy Now</option>
+													<option value="value">Visit Page</option>
+												</select>
+											</div>
+										</div>
+										<div class="column">
+											<div class="label-text"><label for="action-url2">Call to Action URL:</label></div>
+											<div class="form-input">
+												<input type="text" class="input" placeholder="Enter URL" id="action-url2">
+											</div>
+										</div>
+									</div>
+									<div class="form-row full-imd">
+										<div class="column">
+											<div class="label-text"><label for="map-outcome3">Map to Outcome:</label></div>
+											<div class="form-input">
+												<select id="map-outcome3" class="input">
+													<option value="value">Learn More</option>
+													<option value="value">Buy Now</option>
+													<option value="value">Visit Page</option>
+												</select>
+											</div>
+										</div>
+										<div class="column button-column">
+											<input type="submit" class="button-submit" value="Save and Create New Offer">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="pagination-list-holder">
+							<ul class="pagination-list">
+								<li>
+									<a href="/">1<span class="close"></span></a>
+									<div class="pagination-popup">
+										<strong>OUTCOME MAPPING</strong>
+										<strong>Your weight Loss Plan Is Efffective!</strong>
+									</div>
+								</li>
+								<li>
+									<a href="/">2<span class="close"></span></a>
+									<div class="pagination-popup">
+										<strong>OUTCOME MAPPING</strong>
+										<strong>Your weight Loss Plan Is Efffective!</strong>
+									</div>
+								</li>
+								<li>
+									<a href="/">3<span class="close"></span></a>
+									<div class="pagination-popup">
+										<strong>OUTCOME MAPPING</strong>
+										<strong>Your weight Loss Plan Is Efffective!</strong>
+									</div>
+								</li>
+								<li>
+									<a href="/">4<span class="close"></span></a>
+									<div class="pagination-popup">
+										<strong>OUTCOME MAPPING</strong>
+										<strong>Your weight Loss Plan Is Efffective!</strong>
+									</div>
+								</li>
+								<li class="active">
+									<a href="/">5<span class="close"></span></a>
+									<div class="pagination-popup">
+										<strong>OUTCOME MAPPING</strong>
+										<strong>Your weight Loss Plan Is Efffective!</strong>
+									</div>
+								</li>
+								<li>
+									<a href="/">6<span class="close"></span></a>
+									<div class="pagination-popup">
+										<strong>OUTCOME MAPPING</strong>
+										<strong>Your weight Loss Plan Is Efffective!</strong>
+									</div>
+								</li>
+								<li>
+									<a href="/">7<span class="close"></span></a>
+									<div class="pagination-popup">
+										<strong>OUTCOME MAPPING</strong>
+										<strong>Your weight Loss Plan Is Efffective!</strong>
+									</div>
+								</li>
+								<li>
+									<a class="more" href="#">...</a>
+								</li>
+							</ul>
+						</div>
+						<div class="form-button">
+							<a href="#" class="button-back">Go Back</a>
+							<a href="#" class="button-submit">Review and Publish</a>
+						</div>
+					</form>
+					<div class="live-section offer-live-section">
+						<span class="ptitle">Live Preview</span>
+						<div class="live-box">
+							<div class="ads-carousel">
+								<div class="mask">
+									<div class="slideset">
+										<div class="slide active open-close">
+											<div class="ad-box">
+												<div class="text-block">
+													<h3>Invest in your health with 30 day paleo guide </h3>
+													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna You know the importance of mixing up your routine and are not afraid to take a day of rest. When someone says they work out two times a day every day without fail, you just sit back and smile knowing that you are getting the results you want and have a life outside of the gym.  </p>
+													<div class="button-holder">
+														<a href="#" class="button-more">Learn More</a>
+													</div>
+												</div>
+											</div>
+											<a href="#" class="button-show-result opener">Show Quiz Result</a>
+											<div class="open-slide">
+												<ul class="social-links medium">
+													<li><a href="#" class="facebook">Facebook</a></li>
+													<li><a href="#" class="twitter">Twitter</a></li>
+												</ul>
+												<div class="article">
+													<strong class="heading">Right On Track</strong>
+													<p>Congratulations! You have not succumb to the pitfalls of overtraining, or undertraining and you know what it takes to get the results you desire!</p>
+													<p>You know the importance of mixing up your routine and are not afraid to take a day of rest. When someone says they work out two times a day every day without fail, you just sit back and smile knowing that you are getting the results you want and have a life outside of the gym.</p>
+													<p>It looks like you may be getting into the undertraining syndrome.  You’ll need some flexing of muscles and some determination in order to get anywhere close to being fit.  Doing regular exercise is commendable in that it helps with better blood circulation and maintaining a particular level of muscle mass and strength and metabolism.  However, once it gets into a steady state, even if for a prolonged period, it halts any further benefit such as increased muscle mass or strength.  This is because the body has gotten accustomed to that level of workout.<br>In order to achieve the shape, mass, volume and strength of muscle and physique that you seek, you need to increase the intensity of your workout.  You must, however,  watch over getting your results without getting into the extremes as you might get into overtraining which carries with it many problems such as increased cortisol hormone production which results to increased levels of stored fat and decreased production of the growth hormone which also increases levels of fat in the body, as well as, weakens muscles and bones.<br>You must then know how to strike the balance between undertraining and overtraining to achieve that fitness state, body shape or muscle mass that you are aiming to have.<br>Solution</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide open-close">
+											<div class="image-box"><img src="/images/image01.jpg" height="308" width="597" alt="image desription"></div>
+											<a href="#" class="button-show-result opener">Show Quiz Result</a>
+											<div class="open-slide">
+												<ul class="social-links medium">
+													<li><a href="#" class="facebook">Facebook</a></li>
+													<li><a href="#" class="twitter">Twitter</a></li>
+												</ul>
+												<div class="article">
+													<strong class="heading">Right On Track</strong>
+													<p>Congratulations! You have not succumb to the pitfalls of overtraining, or undertraining and you know what it takes to get the results you desire!</p>
+													<p>You know the importance of mixing up your routine and are not afraid to take a day of rest. When someone says they work out two times a day every day without fail, you just sit back and smile knowing that you are getting the results you want and have a life outside of the gym.</p>
+													<p>It looks like you may be getting into the undertraining syndrome.  You’ll need some flexing of muscles and some determination in order to get anywhere close to being fit.  Doing regular exercise is commendable in that it helps with better blood circulation and maintaining a particular level of muscle mass and strength and metabolism.  However, once it gets into a steady state, even if for a prolonged period, it halts any further benefit such as increased muscle mass or strength.  This is because the body has gotten accustomed to that level of workout.<br>In order to achieve the shape, mass, volume and strength of muscle and physique that you seek, you need to increase the intensity of your workout.  You must, however,  watch over getting your results without getting into the extremes as you might get into overtraining which carries with it many problems such as increased cortisol hormone production which results to increased levels of stored fat and decreased production of the growth hormone which also increases levels of fat in the body, as well as, weakens muscles and bones.<br>You must then know how to strike the balance between undertraining and overtraining to achieve that fitness state, body shape or muscle mass that you are aiming to have.<br>Solution</p>
+												</div>
+											</div>
+										</div>
+
+										<div class="slide open-close">
+											<div class="ad-box">
+												<div class="image"><img src="/images/image04.jpg" height="151" width="597" alt="image description"></div>
+												<div class="text-block">
+													<h3>Invest in your health with 30 day paleo guide </h3>
+													<div class="button-holder">
+														<a href="#" class="button-more">Learn More</a>
+													</div>
+												</div>
+											</div>
+											<a href="#" class="button-show-result opener">Show Quiz Result</a>
+											<div class="open-slide">
+												<ul class="social-links medium">
+													<li><a href="#" class="facebook">Facebook</a></li>
+													<li><a href="#" class="twitter">Twitter</a></li>
+												</ul>
+												<div class="article">
+													<strong class="heading">Right On Track</strong>
+													<p>Congratulations! You have not succumb to the pitfalls of overtraining, or undertraining and you know what it takes to get the results you desire!</p>
+													<p>You know the importance of mixing up your routine and are not afraid to take a day of rest. When someone says they work out two times a day every day without fail, you just sit back and smile knowing that you are getting the results you want and have a life outside of the gym.</p>
+													<p>It looks like you may be getting into the undertraining syndrome.  You’ll need some flexing of muscles and some determination in order to get anywhere close to being fit.  Doing regular exercise is commendable in that it helps with better blood circulation and maintaining a particular level of muscle mass and strength and metabolism.  However, once it gets into a steady state, even if for a prolonged period, it halts any further benefit such as increased muscle mass or strength.  This is because the body has gotten accustomed to that level of workout.<br>In order to achieve the shape, mass, volume and strength of muscle and physique that you seek, you need to increase the intensity of your workout.  You must, however,  watch over getting your results without getting into the extremes as you might get into overtraining which carries with it many problems such as increased cortisol hormone production which results to increased levels of stored fat and decreased production of the growth hormone which also increases levels of fat in the body, as well as, weakens muscles and bones.<br>You must then know how to strike the balance between undertraining and overtraining to achieve that fitness state, body shape or muscle mass that you are aiming to have.<br>Solution</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<a href="#" class="btn-prev"><span class="icon icon-arrow-bottom"></span></a>
+									<a href="#" class="btn-next"><span class="icon icon-arrow-bottom"></span></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/jquery-2.1.4.min.js"><\/script>')</script>
+	<script type="text/javascript" src="js/dropzone.min.js"></script>
+	<script type="text/javascript" src="js/jquery.main.js"></script>
+</body>
+</html>

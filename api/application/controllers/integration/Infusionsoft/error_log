@@ -1,0 +1,9 @@
+[02-Sep-2015 02:17:35 UTC] PHP Warning:  include(../api/1.0/control.php): failed to open stream: No such file or directory in /home/yazamobc/public_html/app/quiz/integration/infusionsoft/basetest.php on line 6
+[02-Sep-2015 02:17:35 UTC] PHP Warning:  include(../api/1.0/control.php): failed to open stream: No such file or directory in /home/yazamobc/public_html/app/quiz/integration/infusionsoft/basetest.php on line 6
+[02-Sep-2015 02:17:35 UTC] PHP Warning:  include(): Failed opening '../api/1.0/control.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/yazamobc/public_html/app/quiz/integration/infusionsoft/basetest.php on line 6
+[02-Sep-2015 02:17:35 UTC] PHP Fatal error:  Class 'Base' not found in /home/yazamobc/public_html/app/quiz/integration/infusionsoft/basetest.php on line 7
+[02-Sep-2015 02:17:46 UTC] PHP Warning:  include(../../api/1.0/control.php): failed to open stream: No such file or directory in /home/yazamobc/public_html/app/quiz/integration/infusionsoft/basetest.php on line 6
+[02-Sep-2015 02:17:46 UTC] PHP Warning:  include(../../api/1.0/control.php): failed to open stream: No such file or directory in /home/yazamobc/public_html/app/quiz/integration/infusionsoft/basetest.php on line 6
+[02-Sep-2015 02:17:46 UTC] PHP Warning:  include(): Failed opening '../../api/1.0/control.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/yazamobc/public_html/app/quiz/integration/infusionsoft/basetest.php on line 6
+[02-Sep-2015 02:17:46 UTC] PHP Fatal error:  Class 'Base' not found in /home/yazamobc/public_html/app/quiz/integration/infusionsoft/basetest.php on line 7
+[02-Sep-2015 02:20:26 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/yazamobc/public_html/app/quiz/integration/infusionsoft/basetest.php on line 5

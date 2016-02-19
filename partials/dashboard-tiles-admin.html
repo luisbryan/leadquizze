@@ -1,0 +1,86 @@
+<div id="main" class="same-height">
+    <aside id="sidebar" class="same">
+        <a href="#" class="nav-opener"><span class="icon icon-arrow-bottom"></span></a>
+        <div class="holder">
+            <div class="logo"><a href="/"><img src="/images/logo.png" height="21" width="185" alt="Lead Quizzes" class="logo-large"><img src="/images/logo-small.png" alt="Lead Quizzes" class="logo-small"></a></div>
+            <div class="nav-section" ng-controller="navigation" ng-include="navigation()"></div>
+        </div>
+    </aside>
+    <div class="user-section" ng-controller="user" ng-include="user()"></div>
+	<div id="content" class="same">
+		<header class="page-heading">
+			<div class="right-block">
+				<a href="http://help.leadquizzes.com" target="_h" class="link">Help &amp; Support</a>
+			</div>
+			<h1>Templates <small>/&nbsp; Here you can manage the templates available to users</small></h1>
+		</header>
+		<div class="dash-content status-content grid-view row-grid">
+			<div class="stat-section">
+				<div class="title-header" style="padding-bottom: 14px;">
+					<div class="right-block">
+						<div class="view">
+							<span>Select view:</span>
+							<a href="dashboard-tiles-admin" class="view-grid active"><span class="icon icon-grid"></span></a>
+							<a href="dashboard-admin" class="view-row"><span class="icon icon-rows"></span></a>
+						</div>
+						<div class="dropdown-menu">
+							<a class="button-default">Actions <span class="caret down"></span></a>
+							<div class="dropdown">
+								<ul id="actions">
+									<li id="action-no-quiz"><a>No Template Selected</a></li>
+									<li id="action-edit"><a style="cursor: pointer;" ng-click="editSelectedTile()">Edit</a></li>
+									<li id="action-view"><a style="cursor: pointer;" ng-click="viewSelectedTile()">View</a></li>
+									<li id="action-publish"><a style="cursor: pointer;" ng-click="publishSelectedTiles()">Activate</a></li>
+									<li id="action-unpublish"><a style="cursor: pointer;" ng-click="unpublishSelectedTiles()">De-activate</a></li>
+									<li id="action-delete"><a style="cursor: pointer;" ng-click="deleteSelectedTiles()">Delete</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<strong class="title">Active Templates:</strong>
+				</div>
+				<div class="quiz-row active-quiz">
+					<div ng-if="quiz.quizStatusName=='Published'" style="background-image: url('images/{{quiz.imageId}}');background-size: cover;background-position: 50% 50%;height: 228px;" class="quiz-card" ng-repeat="quiz in quizzes" data-quizId="{{quiz.quizId}}" data-quizLink="{{quiz.quizLink}}">
+						<div class="overlay">
+							<div class="text-block">
+								<strong class="title"><input class="quiz-checkbox" jcf type="checkbox">&nbsp;</strong>
+							</div>
+							<div class="button-holder">
+								<a style="cursor: pointer;" ng-click="editQuiz(quiz.quizId)" class="lightbox button-finish">Edit Template</a>
+							</div>
+							<div class="text-block">
+								<strong class="title">{{quiz.name}}</strong>
+								<p style="display:block!important;">{{quiz.segmentid}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="quiz-row" ng-if="publishedCount==0">
+					<strong style="margin-left: 28px; font-size: 12px;" class="title">No Active Templates</strong>
+				</div>
+			</div>
+			<div class="stat-section">
+				<strong class="title">Inactive Templates:</strong>
+				<div class="quiz-row">
+					<div class="quiz-card" ng-if="quiz.quizStatusName=='Drafted'" style="background-image: url('images/{{quiz.imageId}}');background-size: cover;background-position: 50% 50%;height: 228px;" ng-repeat="quiz in quizzes">
+						<div class="overlay">
+							<div class="text-block">
+								<strong class="title"><input class="quiz-checkbox" jcf type="checkbox">&nbsp;</strong>
+							</div>
+							<div class="button-holder">
+								<a style="cursor: pointer;" ng-click="editQuiz(quiz.quizId)" class="lightbox button-finish">Edit Template</a>
+							</div>
+							<div class="text-block">
+								<strong class="title">{{quiz.name}}</strong>
+								<p style="display:block!important;">{{quiz.segmentid}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="quiz-row" ng-if="unpublishedCount==0">
+					<strong style="margin-left: 28px; font-size: 12px;" class="title">No Inactive Templates</strong>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

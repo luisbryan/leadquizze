@@ -1,0 +1,168 @@
+<div id="main" class="same-height">
+    <aside id="sidebar" class="same">
+        <a href="#" class="nav-opener"><span class="icon icon-arrow-bottom"></span></a>
+        <div class="holder">
+            <div class="logo"><a href="/"><img src="/images/logo.png" height="21" width="185" alt="Lead Quizzes" class="logo-large"><img src="/images/logo-small.png" alt="Lead Quizzes" class="logo-small"></a></div>
+            <div class="nav-section" ng-controller="navigation" ng-include="navigation()"></div>
+        </div>
+    </aside>
+    <div class="user-section" ng-controller="user" ng-include="user()"></div>
+	<div id="content" class="same">
+		<header class="page-heading">
+			<a href="http://help.leadquizzes.com" target="_h" class="link">Help &amp; Support</a>
+			<h1 ng-if="!isAdmin">New Quiz <small>/&nbsp; Enter basic information about your new quiz.</small></h1>
+			<h1 ng-if="isAdmin">New Template <small>/&nbsp; Enter basic information about this template.</small></h1>
+		</header>
+		<div class="content-body">
+			<form ng-controller="quiz" ng-init="init()" ng-submit="createOrUpdate()" class="quiz-title-form create-form validate-form">
+				<div ng-if="isAdmin" class="form-row">
+					<div class="label-text">
+						<label for="name">*Industry:</label>
+					</div>
+					<div class="form-input">
+						<input type="text" class="input" id="industry" ng-model="input.industry" data-max-length="100">
+						<span class="error-message">You need to enter an industry</span>
+					</div>
+				</div>
+				<div class="form-row">
+					<div ng-include="'partials/alert.html'"></div>
+					<div class="label-text">
+						<span class="counter">{{$root.quizNameLength}}/100</span>
+						<label for="name">*Quiz Name:</label>
+					</div>
+					<div class="form-input">
+						<input type="text" class="input required" id="name" ng-model="input.name" data-max-length="100">
+						<span class="error-message">You need to enter a name</span>
+					</div>
+				</div>
+				<div class="file-drop-section">
+					<div class="label-text">
+						<span class="label" style="text-align: left; margin-left: 4px;">Quiz Image:</span>
+					</div>
+					<input type="hidden" ng-model="input.imageId">
+					<button id="quiz-image-dropzone" type="button" style="width: 100%" dropzone="dropzoneConfig" class="drop-box">
+						<div class="dz-message">
+							<span class="icon-upload">Upload Icon</span>
+							<strong class="title">Drop Image to Upload</strong>
+							<span>or <span style="color: #23a6f2; text-decoration: underline;">click here</span></span>
+						</div>
+					</button>
+					Max Size: 2MB 
+					<div style="float: right; position: relative;">Required Dimensions: 600 x 400</div>
+				</div>
+				<div class="form-row">
+					<div class="label-text">
+						<span class="counter">{{$root.quizTitleLength}}/100</span>
+						<label for="title">*Quiz Title:</label>
+					</div>
+					<div class="form-input">
+						<input type="text" class="input required" id="title" ng-model="input.title" data-max-length="100">
+						<span class="error-message">You need to enter a title</span>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="label-text">
+						<span class="counter">{{$root.quizDescriptionLength}}/100</span>
+						<label for="description">Quiz Description:</label>
+					</div>
+					<div class="form-input">
+						<textarea data-max-length="100" id="description" ng-model="input.description" cols="3" rows="1" class="input-text"></textarea>
+						<span class="error-message">You need to enter description</span>
+					</div>
+				</div>
+				<div class="two-columns">
+					<div class="column">
+						<div class="label-text"><label for="cta">*Call to Action:</label></div>
+						<div class="form-input">
+							<select jcf id="cta" class="input required-select" ng-model="input.cta" ng-init="input.cta = input.cta || ''" data-select-model="button-id">
+								<option value="">Please Select</option>
+								<option value="Start Page">Start Page</option>
+								<option value="Begin">Begin</option>
+								<option value="Start">Start</option>
+								<option value="Start Quiz">Start Quiz</option>
+								<option value="Start Test">Start Test</option>
+								<option value="Start My Quiz">Start My Quiz</option>
+								<option value="Start My Test">Start My Test</option>
+								<option value="Discover">Discover</option>
+								<option value="Learn More">Learn More</option>
+							</select>
+						</div>
+					</div>
+					<div class="column">
+						<div class="two-cols">
+							<div class="col large-switch">
+								<div class="switch-label">Social Sharing:</div>
+								<div class="switch-menu">
+									<label class="switch"><input jcf type="checkbox" ng-model="input.hasSocialShare" hidden="hidden" ng-init="input.hasSocialShare = input.hasSocialShare || false"></label>
+									<span class="label enable">Enabled</span>
+									<span class="label disable">Disabled</span>
+								</div>
+							</div>
+							<div class="col large-switch">
+								<div class="switch-label">Start Page:</div>
+								<div class="switch-menu">
+									<label class="switch"><input jcf type="checkbox" ng-model="input.hasStartPage" hidden="hidden" ng-init="input.hasStartPage = input.hasStartPage || false"></label>
+									<span class="label enable">Enabled</span>
+									<span class="label disable">Disabled</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div ng-if="!isAdmin" class="two-columns">
+					<div class="column">
+						<div class="label-text"><label for="integrationId">Integration:</label></div>
+						<div class="form-input">
+							<select id="integrationId" ng-options="vendor.integrationId as vendor.vendorName for vendor in activeVendors" jcf ng-change="getIntegrationSegments()" class="input" ng-model="input.integrationId" ng-init="input.integrationId = input.integrationId || ''">
+								<option ng-if="activeVendors.length > 0" value="">No Integration Selected</option>
+								<option ng-if="activeVendors.length == 0" value="">No Integrations Available</option>
+							</select>
+						</div>
+					</div>
+					<div class="column">
+						<div class="label-text"><label for="segmentId">Segment:</label></div>
+						<div class="form-input">
+							<select jcf id="segmentId" ng-options="segment.id as segment.name for segment in integrationSegments" class="input" ng-model="input.segmentid" ng-init="input.segmentid = input.segmentid || ''">
+
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-button">
+					<a href="home" ng-click="clear()" class="button-back">Cancel</a>
+					<input type="submit" class="button-submit" value="Save and Create Outcomes">
+				</div>
+			</form>
+			<div class="live-section live-quiz-section">
+				<span class="ptitle">Live Preview</span>
+				<div class="live-box no-pad">
+					<div class="quiz-title-block">
+						<div class="title-image">
+							<img ng-src="/images/{{$root.quizImageId}}" height="418" width="839" alt="image description">
+							<div class="overlay">
+								<strong class="title" id="title-box">{{$root.quizTitle}}</strong>
+								<span class="desc" id="description-box">{{$root.quizDescription}}</span>
+							</div>
+						</div>
+						<footer>
+							<div class="button-holder">
+								<a class="button-more" id="button-id">{{$root.quizCta}}</a>
+							</div>
+							<span class="powered-text">Powered by <a>LeadQuizzes</a></span>
+						</footer>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="template-container" style="display: none;">
+	<div class="dz-preview dz-file-preview">
+	  <div class="dz-details">
+	    <img data-dz-thumbnail />
+	  </div>
+	  <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
+	  <div class="dz-error-message"><span data-dz-errormessage></span></div>
+	</div>
+</div>

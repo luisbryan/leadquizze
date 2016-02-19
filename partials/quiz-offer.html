@@ -1,0 +1,275 @@
+<div id="main" class="same-height">
+    <aside id="sidebar" class="same">
+        <a href="#" class="nav-opener"><span class="icon icon-arrow-bottom"></span></a>
+        <div class="holder">
+            <div class="logo"><a href="/"><img src="/images/logo.png" height="21" width="185" alt="Lead Quizzes" class="logo-large"><img src="/images/logo-small.png" alt="Lead Quizzes" class="logo-small"></a></div>
+            <div class="nav-section" ng-controller="navigation" ng-include="navigation()"></div>
+        </div>
+    </aside>
+    <div class="user-section" ng-controller="user" ng-include="user()"></div>
+	<div id="content">s
+		<header class="page-heading">
+			<a href="http://help.leadquizzes.com" target="_h" class="link">Help &amp; Support</a>
+			<h1>Create Offer <small>/&nbsp; Describe your offer to pitch to leads after they receive the results.</small></h1>
+		</header>
+		<div class="content-body">
+			<form ng-controller="quiz-offer" ng-submit="saveOffer()" class="create-offer-form create-form validate-form">
+				<div class="form-row">
+					<div ng-include="'partials/alert.html'"></div>
+				</div>
+				<div class="form-row">
+					<div class="pagination-list-holder" style="border-bottom: 1px solid #222; box-shadow: 0 1px 0 #999; margin-bottom: 24px; padding-bottom: 12px;">
+						<strong class="title">Outcomes:</strong>
+						<ul class="pagination-list">
+							<li ng-repeat="outcome in outcomes" style="cursor: pointer;" ng-class="{'active' : currentOutcome == outcome.outcomeId, 'has-offer' : ( outcome.offerId && outcome.offerEnabled == 1 )}">
+								<a ng-click="getOfferByOutcomeId(outcome.outcomeId)">{{$index+1}}</a>
+								<div class="pagination-popup">
+									<strong>{{outcome.title}}</strong>
+								</div>
+							</li>
+						</ul>
+						<div ng-if="!outcomes.length">No outcomes created</div>
+					</div>
+				</div>
+				<div class="switch-row" ng-if="!currentOutcome">
+					Select an outcome to add an offer
+				</div>
+				<div class="switch-row" ng-if="currentOutcome">
+					<div class="switch-label">Enable Offer:</div>
+					<div class="switch-menu">
+						<input jcf type="checkbox" hidden="hidden" id="vis" ng-model="input.offerEnabled">
+						<label class="switch" for="vis"></label>
+						<span class="label enable">On</span>
+						<span class="label disable">Off</span>
+					</div>
+				</div>
+				<div class="form-row" ng-if="input.offerEnabled">
+					<div class="form-input">
+						<select jcf class="offer-select-input" ng-model="input.offerType" ng-init="input.offerType = input.offerType || 0">
+							<option value="0">Select Offer Type</option>
+							<option value="tab1">Text Offer with CTA</option>
+							<option value="tab2">Image Offer</option>
+							<option value="tab3">Image Offer with Headline and CTA</option>
+						</select>
+					</div>
+				</div>
+				<div class="tab-content">
+					<div id="tab1" ng-if="input.offerType == 'tab1' && input.offerEnabled">
+						<div class="form-row">
+							<div class="label-text">
+								<span class="counter">{{$root.offerHeadlineLength}}/100</span>
+								<label for="headline1">*Offer Headline:</label>
+							</div>
+							<div class="form-input">
+								<input type="text" class="input required" id="headline1" data-max-length="100" ng-model="input.offerHeadline">
+								<span class="error-message">You need to enter headline</span>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="label-text">
+								<span class="counter">{{$root.offerDescriptionLength}}/100</span>
+								<label for="description1">*Offer Description:</label>
+							</div>
+							<div class="form-input">
+								<textarea id="description1" cols="3" rows="1" class="input-text required ti1" data-max-length="100" ng-model="input.offerDescription"></textarea>
+								<span class="error-message">You need to enter description</span>
+							</div>
+						</div>
+						<div class="two-columns">
+							<div class="form-row">
+								<div class="column">
+									<div class="label-text"><label for="action-label1">Call to Action Label:</label></div>
+									<div class="form-input">
+										<select jcf id="action-label1" class="input" ng-model="input.offerCta" ng-init="input.offerCta = input.offerCta || ''">
+											<option value="">Please Select</option>
+											<option value="Buy Now">Buy Now</option>
+											<option value="Learn More">Learn More</option>
+											<option value="Download">Download</option>
+											<option value="Shop Now">Shop Now</option>
+											<option value="Sign Up">Sign Up</option>
+											<option value="Book Now">Book Now</option>
+											<option value="Watch">Watch</option>
+										</select>
+									</div>
+								</div>
+								<div class="column">
+									<div class="label-text"><label for="action-url1">Call to Action URL:</label></div>
+									<div class="form-input">
+										<input type="text" class="input" id="action-url1" ng-model="input.offerUrl">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="tab2" ng-if="input.offerType == 'tab2' && input.offerEnabled">
+						<div class="file-drop-section">
+							<div class="label-text">
+								<span class="label">Add Image File:</span>
+								<input type="hidden" ng-model="input.offerImage">
+							</div>
+							<button id="offer-image-dropzone" type="button" style="width: 100%" dropzone="dropzoneConfig" class="drop-box">
+								<div class="dz-message">
+									<span class="icon-upload">Upload Icon</span>
+									<strong class="title">Drop Image to Upload</strong>
+									<span>or <span style="color: #23a6f2; text-decoration: underline;">click here</span></span>
+								</div>
+							</button>
+							Max Size: 2MB 
+							<div style="float: right; position: relative;">Required Dimensions: 600 x 400</div>
+						</div>
+						<div class="form-row">
+							<div class="label-text">
+								<label for="url">Call to Action URL:</label>
+							</div>
+							<div class="form-input"><input type="text" class="input" id="url" ng-model="input.offerUrl"></div>
+						</div>
+					</div>
+					<div id="tab3" ng-if="input.offerType == 'tab3' && input.offerEnabled">
+						<div class="file-drop-section">
+							<div class="label-text">
+								<span class="label">Add Image File:</span>
+							</div>
+							<button id="offer-image-dropzone2" type="button" style="width: 100%" dropzone="dropzoneConfig2" class="drop-box">
+								<div class="dz-message">
+									<span class="icon-upload">Upload Icon</span>
+									<strong class="title">Drop Image to Upload</strong>
+									<span>or <span style="color: #23a6f2; text-decoration: underline;">click here</span></span>
+								</div>
+							</button>
+							Max Size: 2MB 
+							<div style="float: right; position: relative;">Required Dimensions: 600 x 400</div>
+						</div>
+						<div class="form-row">
+							<div class="label-text">
+								<label for="headline3">*Offer Headline:</label>
+								<span class="counter">{{$root.offerHeadlineLength}}/100</span>
+							</div>
+							<div class="form-input">
+								<input type="text" class="input required" id="headline3" ng-model="input.offerHeadline">
+								<span class="error-message">You need to enter headline</span>
+							</div>
+						</div>
+						<div class="two-columns">
+							<div class="form-row">
+								<div class="column">
+									<div class="label-text"><label for="action-label2">Call to Action Label:</label></div>
+									<div class="form-input">
+										<select jcf id="action-label2" class="input" ng-model="input.offerCta">
+											<option value="">Please Select</option>
+											<option value="Buy Now">Buy Now</option>
+											<option value="Learn More">Learn More</option>
+											<option value="Download">Download</option>
+											<option value="Shop Now">Shop Now</option>
+											<option value="Sign Up">Sign Up</option>
+											<option value="Book Now">Book Now</option>
+											<option value="Watch">Watch</option>
+										</select>
+									</div>
+								</div>
+								<div class="column">
+									<div class="label-text"><label for="action-url2">Call to Action URL:</label></div>
+									<div class="form-input">
+										<input type="text" class="input" id="action-url2" ng-model="input.offerUrl">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div ng-if="currentOutcome">
+						<div>
+							<div class="form-row full-imd">
+								<div class="form-button">
+									<a style="cursor: pointer;" ng-click="saveOffer(true)" class="button-back">Save &amp; Apply to All</a>
+									<input type="submit" class="button-submit" value="Save Offer">
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="form-button" style="border-top: 1px solid #999; box-shadow: 0 -1px 0 #222; margin-top: 24px; padding-top: 12px;">
+					<a href="quiz-capture" class="button-back">Go Back</a>
+					<a href="quiz-review" class="button-submit">Review and Publish</a>
+				</div>
+			</form>
+			<div class="live-section offer-live-section" style="max-width: 600px;">
+				<span class="ptitle">Live Preview</span>
+				<div class="live-box">
+					<div>
+						<div class="mask">
+							<div class="slideset">
+								<div class="slide active open-close tab1show">
+									<div class="ad-box">
+										<div class="text-block">
+											<h3>{{$root.offerHeadline}}</h3>
+											<p>{{$root.offerDescription}}</p>
+											<div class="button-holder">
+												<a class="button-more">{{$root.offerCta}}</a>
+											</div>
+										</div>
+									</div>
+									<div class="open-slide">
+										<ul class="social-links medium">
+											<li><a href="#" class="facebook">Facebook</a></li>
+											<li><a href="#" class="twitter">Twitter</a></li>
+										</ul>
+										<div class="article">
+											<strong class="heading">{{root.outcomeHeadline}}</strong>
+											{{root.outcomeBody}}
+										</div>
+									</div>
+								</div>
+								<div class="slide open-close tab2show">
+									<div class="image-box"><img ng-src="/images/{{$root.offerImage}}" alt="image desription"></div>
+									<div class="open-slide">
+										<ul class="social-links medium">
+											<li><a href="#" class="facebook">Facebook</a></li>
+											<li><a href="#" class="twitter">Twitter</a></li>
+										</ul>
+										<div class="article">
+											<strong class="heading">{{root.outcomeHeadline}}</strong>
+											{{root.outcomeBody}}
+										</div>
+									</div>
+								</div>
+
+								<div class="slide open-close tab3show">
+									<div class="ad-box">
+										<div class="image"><img ng-src="/images/{{$root.offerImage}}" alt="image description"></div>
+										<div class="text-block">
+											<h3>{{$root.offerHeadline}}</h3>
+											<div class="button-holder">
+												<a href="#" class="button-more">{{$root.offerCta}}</a>
+											</div>
+										</div>
+									</div>
+									<div class="open-slide">
+										<ul class="social-links medium">
+											<li><a href="#" class="facebook">Facebook</a></li>
+											<li><a href="#" class="twitter">Twitter</a></li>
+										</ul>
+										<div class="article">
+											<strong class="heading">{{root.outcomeHeadline}}</strong>
+											{{root.outcomeBody}}
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="template-container" style="display: none;">
+	<div class="dz-preview dz-file-preview">
+	  <div class="dz-details">
+	    <img data-dz-thumbnail />
+	  </div>
+	  <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
+	  <div class="dz-error-message"><span data-dz-errormessage></span></div>
+	</div>
+</div>

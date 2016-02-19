@@ -1,0 +1,266 @@
+<div id="main" class="same-height">
+    <aside id="sidebar" class="same">
+        <a href="#" class="nav-opener"><span class="icon icon-arrow-bottom"></span></a>
+        <div class="holder">
+            <div class="logo"><a href="/"><img src="/images/logo.png" height="21" width="185" alt="Lead Quizzes" class="logo-large"><img src="/images/logo-small.png" alt="Lead Quizzes" class="logo-small"></a></div>
+            <div class="nav-section" ng-controller="navigation" ng-include="navigation()"></div>
+        </div>
+    </aside>
+    <div class="user-section" ng-controller="user" ng-include="user()"></div>
+	<div id="content">
+		<header class="page-heading">
+			<a href="http://help.leadquizzes.com" target="_h" class="link">Help &amp; Support</a>
+			<h1>Lead Capture <small>/&nbsp; Configure how leads will be captured during your quiz.</small></h1>
+		</header>
+		<div class="content-body">
+			<form ng-submit="saveCaptureSettings()" class="leads-form create-form validate-form">
+				<div class="form-row">
+					<div ng-include="'partials/alert.html'"></div>
+				</div>
+				<div class="switch-row">
+					<div class="switch-label">Enable Lead Capture:&nbsp;</div>
+					<div class="switch-menu">
+						<input jcf type="checkbox" hidden="hidden" id="vis" ng-model="input.captureEnabled">
+						<label class="switch" for="vis"></label>
+						<span class="label enable">On</span>
+						<span class="label disable">Off</span>
+					</div>
+				</div>
+				<div class="switch-row" ng-show="input.captureEnabled == true">
+					<div class="form-input">
+						<select jcf class="offer-select-input" ng-model="input.leadType" ng-init="input.leadType = input.leadType || 0">
+							<option value="0">Select Lead Capture Type</option>
+							<option value="tab1">Facebook</option>
+							<option value="tab2">Lead capture</option>
+						</select>
+					</div>
+				</div>
+				<div class="tab-content">
+					<div id="tab1" class="social-login-tab" ng-if="input.leadType == 'tab1' && input.captureEnabled">
+						<div class="imp-label">
+							<strong class="label" style="text-align: left; margin-left: -6px;">Important!</strong>
+							<span>Leads will be captured through Facebook</span>
+						</div>
+						<div class="form-row">
+							<div class="label-text">
+								<span class="counter">{{input.socialCaptureHeadline.length}}/100</span>
+								<label for="headline">*Capture Headline:</label>
+							</div>
+							<div class="form-input">
+								<input type="text" class="input required" id="headline" ng-model="input.socialCaptureHeadline" data-max-length="100">
+								<span class="error-message">You need to enter headline</span>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="label-text">
+								<span class="counter">{{input.socialCaptureDescription.length}}/100</span>
+								<label for="description">Capture Text:</label>
+							</div>
+							<div class="form-input">
+								<textarea id="description" cols="3" rows="1" class="input-text" data-max-length="500" ng-model="input.socialCaptureDescription"></textarea>
+								<span class="error-message">You need to enter description</span>
+							</div>
+						</div>
+						<div class="two-columns">
+							<div class="form-row">
+								<div class="column">
+									<div class="label-text"><label for="placement2">*Placement:</label></div>
+									<div class="form-input">
+										<select jcf id="placement2" class="input" ng-model="input.leadCapturePlacement">
+											<option value="">Please Select</option>
+											<option value="before">Before Quiz</option>
+											<option value="after">After Quiz</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="column">
+									<div class="label-text"><label for="conv">Conversion Tracking:</label></div>
+									<div class="form-input">
+										<textarea class="input-text small" id="conv" placeholder="Code Here" ng-model="socialCaptureConversionCode"></textarea>
+									</div>
+								</div>
+								<div class="column large-switch">
+									<div class="switch-label">Enable Skip Option:</div>
+									<div class="switch-menu">
+										<label class="switch"><input jcf type="checkbox" checked="checked" hidden="hidden" ng-model="input.socialCaptureSkippable"></label>
+										<span class="label enable">Enabled</span>
+										<span class="label disable">Disabled</span>
+									</div>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="column small-full">
+									<div class="label-text">
+										<span class="counter">{{input.socialCapturePrivacyPolicy.length}}/30</span>
+										<label for="description">Disclaimer Text:</label>
+									</div>
+									<div class="form-input esp">
+										<textarea class="input" id="apply-style" ng-model="input.socialCapturePrivacyPolicy"></textarea>
+									</div>
+								</div>
+								<div class="column small-full">
+									<div class="label-text"><label for="disurl">Disclaimer URL:</label></div>
+									<div class="form-input">
+										<input type="text" class="input" id="disurl" ng-model="input.socialCaptureDisclaimerUrl">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="tab2" class="form-login-tab" ng-if="input.leadType == 'tab2' && input.captureEnabled">
+						<div class="form-row">
+							<div class="label-text">
+								<span class="counter">{{input.leadCaptureHeadline.length}}/100</span>
+								<label for="headline2">*Capture Headline:</label>
+							</div>
+							<div class="form-input">
+								<input type="text" class="input required" placeholder="Custom Headline" id="headline2" data-max-length="100" ng-model="input.leadCaptureHeadline">
+								<span class="error-message">You need to enter headline</span>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="label-text">
+								<span class="counter">{{input.leadCaptureDescription.length}}/100</span>
+								<label for="description2">Capture Text:</label>
+							</div>
+							<div class="form-input">
+								<textarea id="description2" cols="3" rows="1" class="input-text" data-max-length="500" ng-model="input.leadCaptureDescription"></textarea>
+								<span class="error-message">You need to enter description</span>
+							</div>
+						</div>
+						<div class="two-columns">
+							<div class="form-row">
+								<div class="column">
+									<div class="label-text"><label for="placement1">*Placement:</label></div>
+									<div class="form-input">
+										<select jcf id="placement1" class="input" ng-model="input.leadCapturePlacement">
+											<option value="">Please Select</option>
+											<option value="before">Before Quiz</option>
+											<option value="after">After Quiz</option>
+										</select>
+									</div>
+								</div>
+								<div class="column">
+									<div class="label-text"><label for="placement">Call to Action:</label></div>
+									<div class="form-input">
+										<select jcf id="placement" class="input" ng-model="input.leadCaptureCta">
+											<option value="">Please Select</option>
+											<option value="Submit">Submit</option>
+											<option value="View">View</option>
+											<option value="Reveal">Reveal</option>
+											<option value="Begin">Begin</option>
+											<option value="Discover">Discover</option>
+											<option value="Get Started">Get Started</option>
+											<option value="Show My Result">Show My Result</option>
+											<option value="Sign Up">Sign Up</option>
+											<option value="Learn More">Learn More</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="column">
+									<div class="form-fields">
+										<div class="label-text"><span class="label">Enable Form Fields:</span></div>
+										<ul class="field-list">
+											<li><label><input jcf type="checkbox" ng-model="input.leadCaptureFirstEnabled"> First Name</label></li>
+											<li><label><input jcf type="checkbox" ng-model="input.leadCaptureLastEnabled"> Last Name</label></li>
+											<li><label><input jcf type="checkbox" ng-model="input.leadCaptureEmailEnabled"> Email Address</label></li>
+											<li><label><input jcf type="checkbox" ng-model="input.leadCapturePhoneEnabled"> Phone Number</label></li>
+										</ul>
+									</div>
+									<div class="large-switch">
+										<div class="switch-label">Enable Skip Option:</div>
+										<div class="switch-menu">
+											<label class="switch"><input jcf type="checkbox" checked="checked" hidden="hidden" ng-model="input.leadCaptureSkippable"></label>
+											<span class="label enable">Enabled</span>
+											<span class="label disable">Disabled</span>
+										</div>
+									</div>
+								</div>
+								<div class="column">
+									<div class="form-row">
+										<div class="label-text"><label for="conv2">Conversion Tracking:</label></div>
+										<div class="form-input">
+											<textarea class="input-text small" id="conv2" placeholder="Code Here" ng-model="input.leadCaptureConversionCode"></textarea>
+										</div>
+									</div>
+								</div>
+								<div class="column small-full">
+									<div class="form-row extra">
+										<div class="label-text">
+											<span class="counter">{{input.leadCapturePrivacyPolicy.length}}/30</span>
+											<label for="description">Disclaimer Text:</label>
+										</div>
+										<div class="form-input esp">
+											<textarea class="input" id="apply-style1" ng-model="input.leadCapturePrivacyPolicy"></textarea>
+										</div>
+									</div>
+								</div>
+								<div class="column small-full">
+									<div class="form-row">
+										<div class="label-text"><label for="disc2">Disclaimer URL:</label></div>
+										<div class="form-input">
+											<input type="text" class="input" id="disc2" ng-model="input.leadCaptureDisclaimerUrl">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-button">
+					<a href="#/quiz-questions" class="button-back">Go Back</a>
+					<input type="submit" class="button-submit" value="Save and Create Offer">
+				</div>
+			</form>
+			<div class="live-section leads-live-section" ng-show="input.captureEnabled && input.leadType">
+				<span class="ptitle">Live Preview</span>
+				<div class="live-box tab-content" id="preview">
+					<div id="dup-tab1" class="lead-capture-preview add" ng-if="input.leadType == 'tab1'">
+						<h2>{{input.socialCaptureHeadline}}</h2>
+						<p>{{input.socialCaptureDescription}}</p>
+						<div class="social-login-section">
+							<ul class="social-links">
+								<li><a style="cursor: pointer" class="facebook">Facebook</a></li>
+							</ul>
+							<span class="text">{{input.socialCapturePrivacyPolicy}} <a ng-show="input.socialCaptureDisclaimerUrl">Learn more.</a></span>
+						</div>
+						<div class="skip-link" ng-show="input.socialCaptureSkippable"><a>Skip This Step</a></div>
+					</div>
+					<div id="dup-tab2" class="lead-capture-preview" ng-if="input.leadType == 'tab2'">
+						<h2>{{input.leadCaptureHeadline}}</h2>
+						<p>{{input.leadCaptureDescription}}</p>
+						<form class="lead-preview-form">
+							<div class="holder">
+								<div class="form-row" ng-show="input.leadCaptureFirstEnabled">
+									<div class="label-text"><label for="fname">First Name:</label></div>
+									<div><input type="text" class="input" id="fname"></div>
+								</div>
+								<div class="form-row" ng-show="input.leadCaptureLastEnabled">
+									<div class="label-text"><label for="lname">Last Name:</label></div>
+									<div><input type="text" class="input" id="lname"></div>
+								</div>
+								<div class="form-row" ng-show="input.leadCaptureEmailEnabled">
+									<div class="label-text"><label for="email">Email Address:</label></div>
+									<div><input type="email" class="input" id="email"></div>
+								</div>
+								<div class="form-row" ng-show="input.leadCapturePhoneEnabled">
+									<div class="label-text"><label for="email">Phone Number:</label></div>
+									<div><input type="email" class="input" id="phone"></div>
+								</div>
+								<div class="form-button">
+									<button type="submit" class="button-submit">{{input.leadCaptureCta}}</button>
+									<div class="skip-link" ng-show="input.leadCaptureSkippable"><a>Skip This Step</a></div>
+									<span class="txt">{{input.leadCapturePrivacyPolicy}} <a ng-show="input.leadCaptureDisclaimerUrl">Learn more.</a></span>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

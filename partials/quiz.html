@@ -1,0 +1,216 @@
+<div class="w1">
+	<header id="header" ng-show="!$root.inFrame">
+		<div class="container">
+			<div class="logo"><a href="{{$root.companyUrl}}"><img src="{{$root.logo}}" alt="Lead Quizzes"></a></div>
+		</div>
+	</header>
+	<div id="main">
+		<div class="quiz-start-page" ng-if="quiz.hasStartPage == 1">
+			<div class="wbox quiz-title-block">
+				<div class="title-image">
+					<img alt="image description" ng-src="/images/{{$root.quizImageId}}">
+					<div class="overlay">
+						<strong id="title-box" class="title">{{$root.quizTitle}}</strong>
+						<span id="description-box" class="desc">{{$root.quizDescription}}</span>
+					</div>
+				</div>
+				<footer>
+					<div class="button-holder">
+						<a class="button-more" style="cursor: pointer;" ng-click="scrollToTop(); quiz.hasStartPage = 0;">{{$root.quizCta}}</a>
+					</div>
+					<span ng-show="!$root.inFrame" class="powered-text">Powered by <a href="http://www.leadquizzes.com" target="_lq">LeadQuizzes</a></span>
+				</footer>
+			</div>
+		</div>
+		<div class="quiz-look-page" ng-if="quiz.hasStartPage == 0 && !$root.quizComplete && ( captureSettings.leadCapturePlacement != 'before' || ( captureSettings.leadCapturePlacement == 'before' && $root.leadCaptured ) )">
+			<div class="wbox question-panel">
+				<header>
+					<span class="qnum">Question {{$root.currentQuestionIndex}} of {{$root.questionCount}}</span>
+					<h1 class="question">{{$root.currentQuestion.questionText}}</h1>
+				</header>
+				<ul class="answer-list">
+					<li ng-repeat="answer in answers" ng-class="{'highlighted': answerSelected[$root.currentQuestionIndex] && answerSelected[$root.currentQuestionIndex] == $index+1}">
+						<a ng-click="answerSelected[$root.currentQuestionIndex] = $index+1; answerSelect(answer.answerOutcome);">
+							<span class="answer">{{answer.answerText}}</span>
+						</a>
+					</li>
+				</ul>
+				<footer ng-show="!$root.inFrame">
+					<a ng-show="$root.currentQuestionIndex > 1" class="button-back" ng-click="goBack()" style="cursor: pointer;"><span class="icon icon-arrow-left"></span> Back</a>
+					<span class="powered-text">Powered by <a href="http://www.leadquizzes.com" target="_lq">LeadQuizzes</a></span>
+				</footer>
+			</div>
+		</div>
+		<div class="quiz-enter-page additional" ng-if="quiz.hasStartPage == 0 && captureSettings.captureEnabled == 1 && !$root.leadCaptured && ( ( captureSettings.leadCapturePlacement == 'before' && !$root.quizComplete ) || ( captureSettings.leadCapturePlacement == 'after' && $root.quizComplete ) )">
+			<div class="wbox" ng-if="captureSettings.leadType == 1">
+				<header>
+					<h1>{{captureSettings.socialCaptureHeadline}}</h1>
+					<p>{{captureSettings.socialCaptureDescription}}</p>
+				</header>
+				<div class="form-holder">
+					<form class="lead-preview-form get-result-form">
+						<div class="holder">
+							<div class="social-login-section" style="text-align: center;">
+								<ul class="social-links">
+									<li><a ng-click="facebookCapture()" style="cursor: pointer; width: auto; height: auto;"><img style="display: block" src="/images/FB_Button_Bigger.png" alt="Facebook Connect"></a></li>
+								</ul>
+							</div>
+							<div class="form-button">
+								<div class="skip-link" ng-if="captureSettings.socialCaptureSkippable"><a style="cursor: pointer" ng-click="scrollToTop(); $root.leadCaptured = true">Skip This Step</a></div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<footer ng-show="!$root.inFrame" style="text-align: left; padding-left: 6px;">
+					<span ng-if="captureSettings.leadType == 1" class="txt">{{captureSettings.socialCapturePrivacyPolicy}} <a ng-show="captureSettings.socialCaptureDisclaimerUrl" href="{{captureSettings.socialCaptureDisclaimerUrl}}" target="_pp">Learn more.</a></span>
+					<span class="powered-text">Powered by <a href="http://www.leadquizzes.com" target="_lq">LeadQuizzes</a></span>
+				</footer>
+			</div>
+			<div class="wbox" ng-if="captureSettings.leadType == 2">
+				<header>
+					<h1>{{captureSettings.leadCaptureHeadline}}</h1>
+					<p>{{captureSettings.leadCaptureDescription}}</p>
+				</header>
+				<div class="form-holder">
+					<form class="lead-preview-form get-result-form" ng-submit="captureLead()">
+						<div class="holder">
+							<div class="form-row" ng-if="captureSettings.leadCaptureFirstEnabled">
+								<div class="label-text"><label for="fname">First Name:</label></div>
+								<div><input type="text" id="fname" class="input" ng-model="input.leadFirst"></div>
+								<div class="error-message">You need to enter your first name</div>
+							</div>
+							<div class="form-row" ng-if="captureSettings.leadCaptureLastEnabled">
+								<div class="label-text"><label for="lname">Last Name:</label></div>
+								<div><input type="text" id="lname" class="input" ng-model="input.leadLast"></div>
+								<div class="error-message">You need to enter your last name</div>
+							</div>
+							<div class="form-row" ng-if="captureSettings.leadCaptureEmailEnabled">
+								<div class="label-text"><label for="email">Email Address:</label></div>
+								<div><input type="email" id="email" class="input" ng-model="input.leadEmail"></div>
+								<div class="error-message">You need to enter a valid email address</div>
+							</div>
+							<div class="form-row" ng-if="captureSettings.leadCapturePhoneEnabled">
+								<div class="label-text"><label for="email">Phone Number:</label></div>
+								<div><input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' id="phone" class="input" ng-model="input.leadPhone"></div>
+								<div class="error-message">You need to enter your phone number</div>
+							</div>
+							<div class="form-button">
+								<button class="button-submit" type="submit">{{captureSettings.leadCaptureCta}}</button>
+								<div class="skip-link" ng-if="captureSettings.leadCaptureSkippable"><a style="cursor: pointer" ng-click="scrollToTop(); $root.leadCaptured = true">Skip This Step</a></div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<footer ng-show="!$root.inFrame" style="text-align: left; padding-left: 6px;">
+					<span class="txt">{{captureSettings.leadCapturePrivacyPolicy}} <a target="_pp" href="{{captureSettings.leadCaptureDisclaimerUrl}}">Learn more.</a></span>
+					<span class="powered-text">Powered by <a href="http://www.leadquizzes.com" target="_lq">LeadQuizzes</a></span>
+				</footer>
+			</div>
+		</div>
+	</div>
+	<div class="quiz-result-page" ng-if="quiz.hasStartPage == 0 && $root.quizComplete && outcome.offerEnabled == 1 && ( captureSettings.captureEnabled != 1 || $root.leadCaptured )">
+		<div class="wbox live-box open-close offerType1" ng-if="outcome.offerType == 1">
+			<div class="ad-box">
+				<div class="text-block">
+					<h3>{{outcome.offerHeadline}}</h3>
+					<p>{{outcome.offerDescription}}</p>
+					<div class="button-holder">
+						<a ng-click="ctaClicked()" class="button-more" target="_offer" href="{{outcome.offerUrl}}">{{outcome.offerCta}}</a>
+					</div>
+				</div>
+			</div>
+			<a class="button-show-result opener" style="cursor: pointer" ng-click="$root.showResults = true;"><img src="/images/downarrow.jpg" /> <span>Show Quiz Result</span></a>
+			<div class="results-container" ng-if="$root.showResults;">
+				<ul class="social-links medium" ng-if="quiz.hasSocialShare">
+					<li><a class="facebook" style="cursor: pointer;" ng-click="facebookShare()">Facebook</a></li>
+					<li><a class="twitter" href="https://twitter.com/intent/tweet?text={{quiz.title}}&url={{$root.quizUrl}}">Tweet</a></li>
+				</ul>
+				<div class="article">
+					<h3 class="heading">{{outcome.title}}</h3>
+					<div class="text-wrap">
+						<ul>
+						    <li ng-repeat="item in outcome.body" ng-bind-html="item.htmlString"></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="wbox live-box open-close offerType2" ng-if="outcome.offerType == 2">
+			<div class="image-box">
+				<a ng-click="ctaClicked()" target="_offer" href="{{outcome.offerUrl}}">
+					<img style="width: 100%; height: auto;" alt="image desription" ng-src="/images/{{$root.offerImage}}">
+				</a>
+			</div>
+			<a class="button-show-result opener" style="cursor: pointer" ng-click="$root.showResults = true;"><img src="/images/downarrow.jpg" /> <span>Show Quiz Result</span></a>
+			<div class="results-container" ng-if="$root.showResults;">
+				<ul class="social-links medium" ng-if="quiz.hasSocialShare">
+					<li><a class="facebook" style="cursor: pointer;" ng-click="facebookShare()">Facebook</a></li>
+					<li><a class="twitter" href="https://twitter.com/intent/tweet?text={{quiz.title}}&url={{$root.quizUrl}}">Tweet</a></li>
+				</ul>
+				<div class="article">
+					<h3 class="heading">{{outcome.title}}</h3>
+					<div class="text-wrap">
+						<ul>
+						    <li ng-repeat="item in outcome.body" ng-bind-html="item.htmlString"></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="wbox live-box open-close offerType3" ng-if="outcome.offerType == 3">
+			<div class="ad-box">
+				<div class="image"><img style="width: 100%; height: auto;" alt="image description" ng-src="/images/{{$root.offerImage}}"></div>
+				<div class="text-block">
+					<h3>{{outcome.offerHeadline}}</h3>
+					<div class="button-holder">
+						<a ng-click="ctaClicked()" class="button-more" target="_offer" href="{{outcome.offerUrl}}">{{outcome.offerCta}}</a>
+					</div>
+				</div>
+			</div>
+			<a class="button-show-result opener" style="cursor: pointer" ng-click="$root.showResults = true;"><img src="/images/downarrow.jpg" /> <span>Show Quiz Result</span></a>
+			<div class="results-container" ng-if="$root.showResults;">
+				<ul class="social-links medium" ng-if="quiz.hasSocialShare">
+					<li><a class="facebook" style="cursor: pointer;" ng-click="facebookShare()">Facebook</a></li>
+					<li><a class="twitter" href="https://twitter.com/intent/tweet?text={{quiz.title}}&url={{$root.quizUrl}}">Tweet</a></li>
+				</ul>
+				<div class="article">
+					<h3 class="heading">{{outcome.title}}</h3>
+					<div class="text-wrap">
+						<ul>
+						    <li ng-repeat="item in outcome.body" ng-bind-html="item.htmlString"></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="quiz-result-page" ng-if="quiz.hasStartPage == 0 && outcome.offerEnabled == 0 && $root.quizComplete && $root.showResults && ( $root.leadCaptured || captureSettings.captureEnabled != 1 )">
+		<div class="wbox live-box open-close offerType1">
+			<div class="open-slide">
+				<ul class="social-links medium" ng-if="quiz.hasSocialShare">
+					<li><a class="facebook" style="cursor: pointer;" ng-click="facebookShare()">Facebook</a></li>
+					<li><a class="twitter" href="https://twitter.com/intent/tweet?text={{quiz.title}}&url={{$root.quizUrl}}">Tweet</a></li>
+				</ul>
+				<div class="article">
+					<h3 class="heading">{{outcome.title}}</h3>
+					<div class="text-wrap">
+						<ul>
+						    <li ng-repeat="item in outcome.body" ng-bind-html="item.htmlString"></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<footer id="footer" ng-show="!$root.inFrame">
+	<div class="f1">
+		<div class="container">
+			<span class="copyright">&reg; 2015 LeadQuizzes. All right reserved. &nbsp; 
+				<a href="http://leadquizzes.com/terms-of-service/" target="_tos">Terms of Service</a> &nbsp; | &nbsp; 
+				<a href="http://leadquizzes.com/privacy-policy/" target="_pp">Privacy Policy</a> &nbsp; | &nbsp; </span>
+		</div>
+	</div>
+</footer>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>

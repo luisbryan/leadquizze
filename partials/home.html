@@ -1,0 +1,51 @@
+<div id="main" class="same-height">
+    <aside id="sidebar" class="same">
+        <a href="#" class="nav-opener"><span class="icon icon-arrow-bottom"></span></a>
+        <div class="holder">
+            <div class="logo"><a href="/"><img src="/images/logo.png" height="21" width="185" alt="Lead Quizzes" class="logo-large"><img src="/images/logo-small.png" alt="Lead Quizzes" class="logo-small"></a></div>
+            <div class="nav-section" ng-controller="navigation" ng-include="navigation()"></div>
+        </div>
+    </aside>
+    <div class="user-section" ng-controller="user" ng-include="user()"></div>
+    <div id="content" class="same">
+        <header class="page-heading">
+            <a href="http://help.leadquizzes.com" target="_h" class="link">Help &amp; Support</a>
+        </header>
+        <div ng-if="!isAdmin" class="lq-interface">
+            <div class="interface-block">
+                <h1>Start Building <strong>Your Quiz</strong></h1>
+                <span class="subtitle">You can always come back here to change this if you change your mind</span>
+                <div class="interface-blocks">
+                    <div class="start-quiz-box">
+                        <a href="quiz-create">
+                            <span class="img"><img src="/images/icon-img01.png" alt="image description"></span>
+                            <strong class="title">Create New Quiz</strong>
+                            <span class="eg">EG. What color are you?</span>
+                        </a>
+                    </div>
+                    <span class="vdiv">or</span>
+                    <div class="select-template-box">
+                        <a href="templates">
+                            <span class="icon-template"></span>
+                            <strong>Select Template</strong>
+                            <span>Browse our templates.</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-if="isAdmin" class="lq-interface">
+            <div class="interface-block">
+                <div class="interface-blocks">
+                    <div class="select-template-box">
+                        <a href="quiz-create">
+                            <span class="icon-template"></span>
+                            <strong>Create Template</strong>
+                            <span>Create a new templates.</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

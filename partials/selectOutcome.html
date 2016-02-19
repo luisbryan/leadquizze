@@ -1,0 +1,9 @@
+<div class="outcome-selector lightbox" id="popup1">
+    <span>Choose Outcome</span>
+    <strong>{{$root.hoverOutcomeTitle}}</strong>
+    <ul class="outcome-numbers">
+        <li ng-repeat="outcome in $root.outcomes"><a href="#" ng-mouseover="hoverOutcome(outcome)" ng-click="$event.preventDefault(); selectOutcome(outcome);" class="close">{{$index+1}}</a></li>
+    </ul>
+</div>
+
+<div ng-show="selected">Selection from a modal: {{ selected }}</div>

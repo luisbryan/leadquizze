@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=1024" />
+	<title>Lead Quizzes</title>
+	<link media="all" rel="stylesheet" href="css/style.css">
+</head>
+<body class="inner">
+	<div id="wrapper">
+		<div id="main" class="same-height">
+			<aside id="sidebar" class="same">
+				<a href="#" class="nav-opener"><span class="icon icon-arrow-bottom"></span></a>
+				<div class="holder">
+					<div class="logo"><a href="/"><img src="/images/logo.png" height="21" width="185" alt="Lead Quizzes" class="logo-large"><img src="/images/logo-small.png" alt="Lead Quizzes" class="logo-small"></a></div>
+					<div class="nav-section">
+						<nav class="navigation">
+							<ul class="nav">
+								<li class="active"><a href="dashboard-admin.html"><span class="icon icon-dashboard"></span> <span class="menu-text">Dashboard</span></a></li>
+								<li><a href="templates.html"><span class="icon icon-layout"></span> <span class="menu-text">Templates</span></a></li>
+								<li><a href="profile-page.html"><span class="icon icon-person"></span> <span class="menu-text">My Account</span></a></li>
+							</ul>
+						</nav>
+					</div>
+					<div class="user-section">
+						<a href="#" class="user-profile has-no-image">
+							<span class="icon icon-plus"></span>
+						</a>
+						<span class="welcome-text">Welcome: <strong class="name">Jenifer James</strong></span>
+						<span class="logout-link"><a href="/">Log Out</a></span>
+					</div>
+				</div>
+			</aside>
+			<div id="content" class="same">
+				<header class="page-heading">
+					<div class="right-block">
+						<a href="#create-new-quiz" class="lightbox button-default">Create New Quiz</a>
+						<a href="#" class="link">Help &amp; Support</a>
+					</div>
+					<h1>Dashboard <small>/&nbsp; Here you can see all of your quizzes statistic and manage all intern accounts from one place</small></h1>
+				</header>
+				<div class="dash-content datatable-content">
+					<div class="table-holder">
+						<div class="status-header">
+							<div class="right-block">
+								<div class="view">
+									<span>Select view:</span>
+									<a href="#" class="view-grid"><span class="icon icon-grid"></span></a>
+									<a href="#" class="view-row"><span class="icon icon-rows"></span></a>
+								</div>
+								<div class="dropdown-menu">
+									<a href="#" class="button-default">Filter <span class="caret down"></span></a>
+									<div class="dropdown">
+										<ul>
+											<li><a href="/">Campaign</a></li>
+											<li><a href="/">Status</a></li>
+											<li><a href="/">Date Created</a></li>
+											<li><a href="/">Views</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="dropdown-menu">
+									<a href="#" class="button-default">Actions <span class="caret down"></span></a>
+									<div class="dropdown">
+										<ul>
+											<li><a href="/">Edit</a></li>
+											<li><a href="/">Delete</a></li>
+											<li><a href="/">Suspend</a></li>
+											<li><a href="/">Reactivate</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="table-box">
+							<strong class="title">All Campaigns</strong>
+							<table id="datatable">
+								<thead>
+									<tr>
+										<th><input name="select_all" value="1" type="checkbox"></th>
+										<th>Company Name</th>
+										<th>Status</th>
+										<th>Date Created</th>
+										<th>Views</th>
+										<th>Leads</th>
+										<th>Social Shares</th>
+										<th>CTA Clicks</th>
+										<th>Conversion Rate</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td></td>
+										<td>Company name</td>
+										<td>Active</td>
+										<td>8/26/2015 </td>
+										<td>55</td>
+										<td>27</td>
+										<td>32</td>
+										<td>20</td>
+										<td>100%</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>Company name 2</td>
+										<td>Active</td>
+										<td>8/26/2015 </td>
+										<td>55</td>
+										<td>27</td>
+										<td>32</td>
+										<td>20</td>
+										<td>90%</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>Company name 3</td>
+										<td>Active</td>
+										<td>8/26/2015 </td>
+										<td>55</td>
+										<td>27</td>
+										<td>32</td>
+										<td>20</td>
+										<td>100%</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>Company name 3</td>
+										<td>Active</td>
+										<td>8/26/2015 </td>
+										<td>55</td>
+										<td>27</td>
+										<td>32</td>
+										<td>20</td>
+										<td>70%</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>Company name 4</td>
+										<td>Active</td>
+										<td>8/26/2015 </td>
+										<td>55</td>
+										<td>27</td>
+										<td>32</td>
+										<td>20</td>
+										<td>100%</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>Company name 5</td>
+										<td>Inactive</td>
+										<td>8/26/2015 </td>
+										<td>55</td>
+										<td>27</td>
+										<td>32</td>
+										<td>20</td>
+										<td>75%</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>Company name 6</td>
+										<td>Active</td>
+										<td>8/26/2015 </td>
+										<td>55</td>
+										<td>27</td>
+										<td>32</td>
+										<td>20</td>
+										<td>100%</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>Company name 7</td>
+										<td>Active</td>
+										<td>8/26/2015 </td>
+										<td>55</td>
+										<td>27</td>
+										<td>32</td>
+										<td>20</td>
+										<td>90%</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>Company name 8</td>
+										<td>Inactive</td>
+										<td>8/26/2015 </td>
+										<td>55</td>
+										<td>27</td>
+										<td>32</td>
+										<td>20</td>
+										<td>100%</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>Company name 9</td>
+										<td>Active</td>
+										<td>8/26/2015 </td>
+										<td>55</td>
+										<td>27</td>
+										<td>32</td>
+										<td>20</td>
+										<td>80%</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>Company name 2</td>
+										<td>Active</td>
+										<td>8/26/2015 </td>
+										<td>55</td>
+										<td>27</td>
+										<td>32</td>
+										<td>20</td>
+										<td>90%</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>Company name 7</td>
+										<td>Active</td>
+										<td>8/26/2015 </td>
+										<td>55</td>
+										<td>27</td>
+										<td>32</td>
+										<td>20</td>
+										<td>90%</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>Company name 8</td>
+										<td>Inactive</td>
+										<td>8/26/2015 </td>
+										<td>55</td>
+										<td>27</td>
+										<td>32</td>
+										<td>20</td>
+										<td>100%</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>Company name 9</td>
+										<td>Active</td>
+										<td>8/26/2015 </td>
+										<td>55</td>
+										<td>27</td>
+										<td>32</td>
+										<td>20</td>
+										<td>80%</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>Company name 10</td>
+										<td>Active</td>
+										<td>8/26/2015 </td>
+										<td>55</td>
+										<td>27</td>
+										<td>32</td>
+										<td>20</td>
+										<td>100%</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>Company name 11</td>
+										<td>Active</td>
+										<td>8/26/2015 </td>
+										<td>55</td>
+										<td>27</td>
+										<td>32</td>
+										<td>20</td>
+										<td>100%</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>Company name</td>
+										<td>Active</td>
+										<td>8/26/2015 </td>
+										<td>55</td>
+										<td>27</td>
+										<td>32</td>
+										<td>20</td>
+										<td>100%</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>Company name 2</td>
+										<td>Active</td>
+										<td>8/26/2015 </td>
+										<td>55</td>
+										<td>27</td>
+										<td>32</td>
+										<td>20</td>
+										<td>90%</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>Company name 3</td>
+										<td>Active</td>
+										<td>8/26/2015 </td>
+										<td>55</td>
+										<td>27</td>
+										<td>32</td>
+										<td>20</td>
+										<td>100%</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>Company name 3</td>
+										<td>Active</td>
+										<td>8/26/2015 </td>
+										<td>55</td>
+										<td>27</td>
+										<td>32</td>
+										<td>20</td>
+										<td>70%</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>Company name 7</td>
+										<td>Active</td>
+										<td>8/26/2015 </td>
+										<td>55</td>
+										<td>27</td>
+										<td>32</td>
+										<td>20</td>
+										<td>90%</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>Company name 8</td>
+										<td>Inactive</td>
+										<td>8/26/2015 </td>
+										<td>55</td>
+										<td>27</td>
+										<td>32</td>
+										<td>20</td>
+										<td>100%</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>Company name 9</td>
+										<td>Active</td>
+										<td>8/26/2015 </td>
+										<td>55</td>
+										<td>27</td>
+										<td>32</td>
+										<td>20</td>
+										<td>80%</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>Company name 10</td>
+										<td>Active</td>
+										<td>8/26/2015 </td>
+										<td>55</td>
+										<td>27</td>
+										<td>32</td>
+										<td>20</td>
+										<td>100%</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>Company name 11</td>
+										<td>Active</td>
+										<td>8/26/2015 </td>
+										<td>55</td>
+										<td>27</td>
+										<td>32</td>
+										<td>20</td>
+										<td>100%</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="popup-holder">
+		<div class="lightbox share-quiz-box" id="create-new-quiz">
+			<form class="quiz-title-form create-form validate-form" action="#" novalidate="novalidate">
+				<div class="form-row">
+					<div class="label-text">
+						<span class="cb-copy">Copy to clipboard</span>
+						<label for="qtitle">Quiz URL:</label>
+					</div>
+					<div class="form-input">
+						<input type="text" id="qtitle" value="https://picjumbo.com/?s=running" class="input copy-text">
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="label-text">
+						<span class="cb-copy copied">Copied</span>
+						<label for="description">Embed Code:</label>
+					</div>
+					<div class="form-input">
+						<textarea class="input-text copy-text" rows="1" cols="3" id="description"><iframe width="420" height="315" src="https://www.youtube.com/
+embed/djV11Xbc914" frameborder="0" allowfullscreen></iframe></textarea>
+					</div>
+				</div>
+				<div class="form-button">
+					<input type="submit" value="Share Quiz" class="button-share">
+				</div>
+			</form>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/jquery-2.1.4.min.js"><\/script>')</script>
+	<script src="js/datatables.min.js"></script>
+	<script src="js/jquery.main.js"></script>
+</body>
+</html>

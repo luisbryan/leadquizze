@@ -1,0 +1,14 @@
+<div class="lightbox api-box" id="api-connect" ng-controller="integration" ng-init="oauthInitialize()">
+    <form ng-submit="closeIntegrationWindow()" class="api-form">
+        <span class="integration-error"></span>
+        <input type="hidden" id="vendorReferenceName" value="constant_contact">
+        <input type="hidden" id="integrationId" ng-model="input.integrationId">
+        <div>
+            Please complete the Constant Contact authorization that opened in a new tab. Once finished, click the 'Done' button to complete the integration.
+        </div>
+        <div class="form-button">
+            <input type="submit" class="button-connect" value="Done">
+            <span class="help-text">Need help? How to connect with Constant Contact. <a href="http://help.leadquizzes.com/article/23-constant-contact" target="_h">Click Here</a></span>
+        </div>
+    </form>
+</div>

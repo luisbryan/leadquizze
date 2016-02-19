@@ -1,0 +1,97 @@
+<style>
+	.fancybox-skin,
+	.fancybox-outer,
+	.fancybox-inner{max-width:300px;margin:0 auto; height: auto !important;}
+</style>
+
+<div id="main" class="same-height">
+    <aside id="sidebar" class="same">
+        <a href="#" class="nav-opener"><span class="icon icon-arrow-bottom"></span></a>
+        <div class="holder">
+            <div class="logo"><a href="/"><img src="/images/logo.png" height="21" width="185" alt="Lead Quizzes" class="logo-large"><img src="/images/logo-small.png" alt="Lead Quizzes" class="logo-small"></a></div>
+            <div class="nav-section" ng-controller="navigation" ng-include="navigation()"></div>
+        </div>
+    </aside>
+    <div class="user-section" ng-controller="user" ng-include="user()"></div>
+	<div id="content" class="same">
+		<header class="page-heading">
+			<a href="http://help.leadquizzes.com" target="_h" class="link">Help &amp; Support</a>
+			<h1>Questions <small>/&nbsp; Create as many questions as you want but keep the number of answers under five</small></h1>
+		</header>
+		<div class="content-body">
+			<form id="questions-form" ng-submit="addOrUpdateQuestion()" class="questions-form create-form validate-form">
+				<div class="form-row">
+					<div ng-include="'partials/alert.html'"></div>
+					<div class="label-text">
+						<span class="counter">{{$root.questionTextLength}}/150</span>
+						<label for="qtitle">Question #{{$root.currentQuestionIndex}}:</label>
+					</div>
+					<div class="form-input">
+						<input type="text" class="input required" id="qtitle" data-max-length="150" data-model-title="title-box" onfocus="this.placeholder = ''" onblur="this.placeholder = 'EG: What is your favorite color?'" placeholder="EG: What is your favorite color?" ng-model="input.questionText">
+						<span class="error-message">You need to enter the text of the question</span>
+					</div>
+				</div>
+				<ol class="answer-list add-ans-list" ng-controller="select-outcome">
+					<li ng-repeat="answer in $root.answers" class="counter-input">
+						<span class="counter">{{answer.answerText.length}}/100</span>
+						<div class="ans-box">
+							<div class="ans-options">
+								<a fancybox ng-click="$root.currentAnswer = answer; openFancybox('partials/selectOutcome.html');" ng-class="{true:'lightbox', false:''}[$answer.answerOutcome]" class="outcome-num lightbox" style="cursor: pointer;">{{answer.answerOutcomeIndex}}</a>
+								<a ng-click="deleteAnswer($index)" ng-hide="$index == 0 && $root.answers.length < 2" class="remove" style="cursor: pointer;">Remove</a>
+							</div>
+							<div class="input-box form-input">
+								<input type="text" class="answer input required answerText" ng-model="answer.answerText" ng-change="checkAnswerLength(answer)">
+								<span class="error-message">You need to enter the text of the answer</span>
+							</div>
+						</div>
+					</li>
+					<li ng-hide="answers.length >= 5">
+						<div class="ans-box">
+							<a ng-click="addAnswer()" class="add-new-ans" style="cursor: pointer;">Add New Answer</a>
+						</div>
+					</li>
+				</ol>
+				<div class="form-button">
+					<input type="submit" onclick="checkAnswers()" class="button-submit" value="Save and Create New">
+				</div>
+				<div class="pagination-list-holder" style="border-top: 1px solid #999; box-shadow: 0 -1px 0 #222; margin-top: 24px; padding-top: 12px;">
+					<strong class="title">Questions:</strong>
+					<ul class="pagination-list">
+						<li ng-repeat="question in questions" ng-class="{'active': question.questionId == currentQuestion}" style="cursor: pointer;">
+							<a ng-click="loadQuestion(question.questionId)">{{$index+1}}<span ng-click="deleteQuestion(question.questionId)" class="close"></span></a>
+							<div class="pagination-popup">
+								<strong>{{question.questionText}}</strong>
+							</div>
+						</li>
+					</ul>
+					<div ng-show="!questions.length">No questions created</div>
+				</div>
+				<div class="form-button">
+					<a href="quiz-outcomes" class="button-back">Go Back</a>
+					<a href="quiz-capture" ng-click="addOrUpdateQuestion();" class="button-back right">Save and Configure Leads</a>
+				</div>
+			</form>
+			<div class="live-section question-live-section">
+				<span class="ptitle">Live Preview</span>
+				<div class="live-box question-panel">
+					<header>
+						<span class="qnum">Question {{$root.currentQuestionIndex}} of {{$root.questionCount}}</span>
+						<strong class="question">{{$root.currentQuestionIndex}}. {{$root.questionText}}</strong>
+					</header>
+					<ul class="answer-list">
+						<li ng-repeat="answer in answers">
+							<label>
+								<input jcf type="radio" name="ans">
+								<span class="answer">{{answer.answerText}}</span>
+							</label>
+						</li>
+					</ul>
+					<footer>
+						<a ng-show="questions.length && $root.currentQuestionIndex != 1" class="button-back">Back</a>
+						<span class="powered-text">Powered by <a href="/">LeadQuizzes</a></span>
+					</footer>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

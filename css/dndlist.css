@@ -1,0 +1,208 @@
+/**
+ * For the correct positioning of the placeholder element, the dnd-list and
+ * it's children must have position: relative
+ */
+ul[dnd-list],
+ul[dnd-list] > li {
+	position: relative;
+}
+
+/**
+ * The dnd-list should always have a min-height,
+ * otherwise you can't drop to it once it's empty
+ */
+ul[dnd-list] {
+    border: 2px solid #fff;
+    min-height: 42px;
+    padding: 0px;
+    padding-bottom: 100px;
+    border-radius: 5px;
+}
+
+/**
+ * The dndDraggingSource class will be applied to
+ * the source element of a drag operation. It makes
+ * sense to hide it to give the user the feeling
+ * that he's actually moving it.
+ */
+ul[dnd-list] .dndDraggingSource {
+    display: none;
+}
+
+/**
+ * An element with .dndPlaceholder class will be
+ * added to the dnd-list while the user is dragging
+ * over it.
+ */
+ul[dnd-list] .dndPlaceholder {
+    display: block;
+    background-color: #ddd;
+    min-height: 42px;
+}
+
+/**
+ * The dnd-lists's child elements currently MUST have
+ * position: relative. Otherwise we can not determine
+ * whether the mouse pointer is in the upper or lower
+ * half of the element we are dragging over. In other
+ * browsers we can use event.offsetY for this.
+ */
+ul[dnd-list] li {
+    background-color: #fff;
+    /*border: 1px solid #ddd;*/
+    border-radius: 4px;
+    display: block;
+    padding: 10px 0px;
+    margin-bottom: -1px;
+}
+
+ul[dnd-list] li:hover {
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+    background-color: #d7e0e7;
+}
+
+/**
+ * Show selected elements in green
+ */
+ul[dnd-list] li.selected {
+    background-color: #dff0d8;
+    color: #3c763d;
+    padding-left: 8px;
+    padding-right: 8px;
+    min-height: 46px;
+}
+
+ul[dnd-list] li.selected hr {
+    width: 80%;
+}
+
+ul[dnd-list] li iframe {
+    border: none;
+}
+
+ul[dnd-list] li ol {
+    padding: 0px;
+    list-style-position: inside;
+    list-style-type: decimal;
+}
+
+ul[dnd-list] li ol li {
+    display: list-item;
+    padding: inherit;
+    background-color: inherit;
+    margin-bottom: 4px;
+    margin-right: 36px;
+    padding-right: 36px;
+}
+
+ul[dnd-list] li ol li.addListItem {
+    display: block;
+    font-weight: bold;
+}
+
+ul[dnd-list] li ol li .itemContent {
+    display: inline;
+}
+
+ul[dnd-list] li ol li .removeListItem {
+    position: relative;
+    float: right;
+    right: -36px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+ul[dnd-list] li .fileUpload {
+    position: relative;
+    overflow: hidden;
+}
+ul[dnd-list] li .fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    left: 0px;
+}
+
+ul[dnd-list] li.selected .dynText {
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+    background-color: #efffee;
+    border-radius: 4px;
+    border: 1px solid #c4dfc6;
+    padding: .9em 1.1em;
+    width: 80%;
+}
+
+ul[dnd-list] li.selected .autoPlay {
+    border: 1px solid black;
+    width: 16px;
+    height: 16px;
+}
+
+ul[dnd-list] li.selected textarea {
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+    background-color: #efffee;
+    border-radius: 4px;
+    border: 1px solid #c4dfc6;
+    padding: .9em 1.1em;
+    width: 100%;
+}
+
+/* custom */
+ul[dnd-list].dragging {
+    border: 2px solid #d7e0e7;
+    -webkit-transition: all 100ms linear;
+    transition: all 100ms linear;
+}
+
+ul[dnd-list] .dnd-save {
+    float: right;
+    position: absolute;
+    top: 14px;
+    right: 40px;
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+    text-indent: 101%;
+    white-space: nowrap;
+    width: 24px;
+    height: 24px;
+    margin: -1px 0 0 7px;
+    -webkit-transition: none;
+    transition: none;
+    background: url("../images/sprite.png") no-repeat -81px -104px;
+}
+
+ul[dnd-list] .dnd-save:hover {
+    background-position: -81px -81px;
+}
+
+ul[dnd-list] .dnd-remove {
+    float: right;
+    position: absolute;
+    top: 13px;
+    right: 10px;
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+    text-indent: 101%;
+    white-space: nowrap;
+    width: 26px;
+    height: 26px;
+    margin: -1px 0 0 7px;
+    -webkit-transition: none;
+    transition: none;
+    background: url("../images/sprite.png") no-repeat -138px -82px;
+}
+
+ul[dnd-list] .dnd-remove:hover {
+    background-position: -108px -82px;
+}

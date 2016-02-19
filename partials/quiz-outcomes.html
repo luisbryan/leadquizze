@@ -1,0 +1,105 @@
+<div id="main" class="same-height">
+    <aside id="sidebar" class="same">
+        <a href="#" class="nav-opener"><span class="icon icon-arrow-bottom"></span></a>
+        <div class="holder">
+            <div class="logo"><a href="/"><img src="/images/logo.png" height="21" width="185" alt="Lead Quizzes" class="logo-large"><img src="/images/logo-small.png" alt="Lead Quizzes" class="logo-small"></a></div>
+            <div class="nav-section" ng-controller="navigation" ng-include="navigation()"></div>
+        </div>
+    </aside>
+    <div class="user-section" ng-controller="user" ng-include="user()"></div>
+	<div id="content" class="same">
+		<header class="page-heading">
+			<a href="http://help.leadquizzes.com" target="_h" class="link">Help &amp; Support</a>
+			<h1>Outcomes <small>/&nbsp; These are the results of your quiz. View and edit your outcomes using the easy editor.</small></h1>
+		</header>
+		<div class="content-body">
+			<form ng-submit="addOrUpdateOutcome()" class="outcome-form create-form validate-form">
+				<div class="pagination-list-holder" style="border-bottom: 1px solid #222; box-shadow: 0 1px 0 #999; margin-bottom: 24px; padding-bottom: 12px;">
+					<strong class="title">Outcomes:</strong>
+					<ul class="pagination-list">
+						<li ng-repeat="outcome in outcomes" ng-class="{'active' : currentOutcome == outcome.outcomeId}" style="cursor: pointer;">
+							<a ng-click="loadOutcome(outcome.outcomeId)">{{$index+1}}<span ng-click="deleteOutcome(outcome.outcomeId)" class="close"></span></a>
+							<div class="pagination-popup">
+								<strong>{{outcome.title}}</strong>
+							</div>
+						</li>
+						<li style="cursor: pointer;"><a style="font-size: 30px; padding: 0px" ng-click="currentOutcome = 'new'; input = []; bodyList = [];">+</a></li>
+					</ul>
+					<div ng-show="!outcomes.length">No outcomes created</div>
+				</div>
+				<div ng-if="currentOutcome" class="form-row">
+					<div class="label-text">
+						<span class="counter">{{$root.outcomeTitleLength}}/100</span>
+						<label for="otitle">Outcome Title:</label>
+					</div>
+					<div class="form-input">
+						<input type="text" class="input required" id="otitle" data-max-length="100" data-modal-title="preview-title" ng-model="input.outcomeTitle">
+						<span class="error-message">You need to enter title</span>
+					</div>
+				</div>
+				<div ng-if="currentOutcome" class="design-options">
+					<strong class="title">Results Design: <span>(simply drag and drop elements that you want to include)</span></strong>
+					<ul class="layout-options">
+						<li ng-repeat="item in models.templates"
+							ng-dblclick="dropDoubleClick(item)"
+							dnd-dragstart="dragStart()"
+							dnd-dragend="dragStop()"
+			                dnd-draggable="item"
+			                dnd-effect-allowed="copy"
+			                dnd-copied="item.id = item.id + 1"
+			                >
+			                <a style="cursor: pointer"><img ng-src="/images/layout-{{item.img}}.png" alt="{{item.type}}"></a><span>{{item.type}}</span>
+			            </li>
+					</ul>
+				</div>
+				<div ng-if="currentOutcome" class="form-button">
+					<input type="submit" class="button-submit" value="Save Outcome">
+				</div>
+				<div ng-if="!currentOutcome">
+					Select an outcome to edit or click the + to add a new one
+				</div>
+				<div class="form-button" style="border-top: 1px solid #999; box-shadow: 0 -1px 0 #222; margin-top: 24px; padding-top: 12px;">
+					<a href="quiz-title" class="button-back">Go Back</a>
+					<a style="cursor: pointer;" ng-click="addOrUpdateOutcome(true);" class="button-back right">Save and Create Questions</a>
+				</div>
+			</form>
+			<div ng-if="currentOutcome" class="live-section only-content" style="margin-top: 3px;">
+				<span class="ptitle">Easy Editor</span>
+				<div class="live-box">
+					<div class="jcf-scrollable">
+						<h2>{{$root.outcomeTitle}}</h2>
+						<div class="text-wrap">
+							<ul
+								ng-model="models.dropzones.bodyList"
+								ng-class="{'dragging' : bodyListDragging == true}"
+								dnd-list="bodyList"
+								dnd-drop="dropCallback(event, index, item, external, type, 'containerType')">
+							    <li
+							    	ng-repeat="item in bodyList"
+							    	ng-class="{'selected': models.selected === item}"
+							    	ng-bind-html="item.htmlString"
+							    	dnd-disable-if="models.selected === item"
+							    	dnd-draggable="item"
+							    	dnd-moved="bodyList.splice($index, 1)"
+							    	dnd-effect-allowed="copyMove"
+							    	dnd-selected="dropSelected(item, event)">
+							    </li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div id="template-container" style="display: none;">
+	<div class="dz-preview dz-file-preview">
+	  <div class="dz-details">
+	    <img data-dz-thumbnail />
+	  </div>
+	  <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
+	  <div class="dz-error-message"><span data-dz-errormessage></span></div>
+	</div>
+</div>

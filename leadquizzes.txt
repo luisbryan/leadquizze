@@ -1,0 +1,62 @@
+YAZAMO LEADQUIZZES
+
+------ ALPHA FTP
+ftp.bettercapture.com
+developer@bettercapture.com
+cnZMAKBXJe6hjgkhuf
+
+
+
+------ URLS
+http://www.leadquizzes.net/
+https://leadquizzes.appspot.com/
+
+
+
+----- HOSTING 2.0
+https://69.16.210.39:2083
+lqadmin2054
+wuDej7Crupr2
+db: lqadmin2054@leadquizzes.net / wuDej7Crupr2
+ftp: lqadmin2054@leadquizzes.net / wuDej7Crupr2
+
+
+------ GOOGLE PLATFORM
+https://console.developers.google.com/project/leadquizzes/appengine/versions?moduleId=default&versionId=1
+http://130.211.140.174/phpmyadmin/index.php
+root / 7kGC)QiNJ)k78V
+
+
+------ DATABASE
+2001:4860:4864:1:edcb:6301:62d4:374a
+lq01 / 7kGC)QiNJ)k78V
+
+
+
+------ DEPLOYMENT
+cd C:\appengine-try-php-master
+appcfg.py -A leadquizzes update C:\appengine-try-php-master
+
+
+------ INTEGRATIONS
+https://labs.aweber.com
+developers@yazamo.com / Yazamo2015
+
+leadquizzes
+yazamo / yazamo
+
+aweber
+rukuspublishing / Rukus12
+
+ontraport
+msklar@reproductivewellness.com / 6370lusk
+web@bloomvibrantly.com / b15#ont
+
+getresponse
+mike@yazamo.com / 71CNu9YSSAiI
+
+bronto
+yazamo / yazqvc15 / phoenix
+
+maropost
+developers@yazamo.com / Cd8YB^Sy!M6x

@@ -1,0 +1,56 @@
+<div id="main" class="same-height">
+    <aside id="sidebar" class="same">
+        <a href="#" class="nav-opener"><span class="icon icon-arrow-bottom"></span></a>
+        <div class="holder">
+            <div class="logo"><a href="/"><img src="/images/logo.png" height="21" width="185" alt="Lead Quizzes" class="logo-large"><img src="/images/logo-small.png" alt="Lead Quizzes" class="logo-small"></a></div>
+            <div class="nav-section" ng-controller="navigation" ng-include="navigation()"></div>
+        </div>
+    </aside>
+    <div class="user-section" ng-controller="user" ng-include="user()"></div>
+	<div id="content" class="same">
+		<header class="page-heading">
+			<a href="http://help.leadquizzes.com" target="_h" class="link">Help &amp; Support</a>
+			<h1 ng-if="!isAdmin">Review and Publish <small>/&nbsp; Review your quiz and publish it when finished.</small></h1>
+			<h1 ng-if="isAdmin">Review and Deploy <small>/&nbsp; Review your template and deploy it when finished.</small></h1>
+		</header>
+		<div class="content-body">
+			<form ng-submit="publishQuiz()" class="quiz-title-form create-form validate-form">
+				<div class="form-row">
+					<div ng-include="'partials/alert.html'"></div>
+					<div class="label-text">
+						<!--span class="cb-copy">Copy to clipboard</span-->
+						<label for="qtitle">Quiz URL:</label>
+					</div>
+					<div class="form-input">
+						<input type="text" readonly class="input copy-text" ng-model="input.quizLinkUrl" id="qtitle">
+						<span class="error-message">You need to enter title</span>
+					</div>
+				</div>
+				<div class="form-button">
+					<a href="quiz-offer" class="button-back">Go Back</a>
+					<input ng-if="!isAdmin" type="submit" class="button-submit" value="Publish">
+					<input ng-if="isAdmin" type="submit" class="button-submit" value="Deploy">
+				</div>
+			</form>
+			<div class="live-section review-live-section">
+				<span class="ptitle">Live Preview</span>
+				<div class="live-box no-pad">
+					<div class="quiz-title-block">
+						<div class="title-image">
+							<img src="/images/{{$root.quizImageId}}" height="418" width="839" alt="image description">
+							<div class="overlay">
+								<strong class="title" id="title-box">{{$root.quizTitle}}</strong>
+								<span class="desc" id="description-box">{{$root.quizDescription}}</span>
+							</div>
+						</div>
+						<footer>
+							<div class="button-holder">
+								<a href="{{input.quizLinkUrl}}" target="_new" class="button-more" id="button-id">{{$root.quizCta}}</a>
+							</div>
+							<span class="powered-text">Powered by <a href="/">LeadQuizzes</a></span>
+						</footer>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

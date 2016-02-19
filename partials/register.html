@@ -1,0 +1,126 @@
+<div class="w1">
+	<header id="header" class="style2">
+		<div class="container">
+			<a href="http://help.leadquizzes.com" target="_h" class="support-link">Help &amp; Support</a>
+			<div class="logo"><a href="/"><img src="/images/logo.png" height="21" width="185" alt="Lead Quizzes"></a></div>
+		</div>
+	</header>
+	<div id="main">
+		<div class="create-account-info">
+			<div class="container">
+				<header>
+					<h1>Create Your <strong>Free Account</strong></h1>
+					<strong class="forgot-text"><span>or</span> <a href="login">Log In</a> if you know already have an account</strong>
+					<span class="subtitle">Start making your quizzes today!</span>
+				</header>
+				<p><strong>Tons of Landing Pages to Customize</strong> - I’ll have the entire LeadPages™ library of high-converting, 100% <br>mobile-responsive landing pages to use for my business.</p>
+				<p><strong>Unlimited Landing Pages</strong> - I can publish as many landing pages as I want on an unlimited number of domains, and drive an unlimited amount of traffic to my pages. (That includes pages for my clients!)</p>
+			</div>
+		</div>
+		<div class="creat-account-section">
+			<div class="container">
+				<div class="max-holder">
+					<div class="form-section">
+						<form ng-submit="register()" class="create-account-form validate-form">
+							<h2>Personal Information</h2>
+							<div class="form-box">
+								<div class="form-row">
+									<div ng-include="'partials/alert.html'"></div>
+								</div>
+								<div class="form-row">
+									<div class="label-text">
+										<label for="company">Company:</label>
+									</div>
+									<div class="form-input">
+										<input type="text" class="input required" id="company" placeholder="Your company name" ng-model="input.companyName" autofocus>
+										<span class="error-message">You need to enter a company name</span>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="label-text">
+										<label for="fullname">Full Name:</label>
+									</div>
+									<div class="form-input">
+										<input type="text" class="input required" id="fullname" placeholder="Your full name" ng-model="input.name">
+										<span class="error-message">You need to enter your full name</span>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="label-text">
+										<label for="email">Email Address:</label>
+									</div>
+									<div class="form-input">
+										<input type="email" class="input required-email" id="email" placeholder="Your email address" ng-model="input.email">
+										<span class="error-message">You need to enter a valid email address</span>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="label-text">
+										<label for="phone">Phone Number:</label>
+									</div>
+									<div class="form-input">
+										<input type="tel" class="input required-number" id="phone" placeholder="Your phone number" ng-model="input.phone">
+										<span class="error-message">You need to enter a valid phone number</span>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="label-text">
+										<label for="website">Website:</label>
+									</div>
+									<div class="form-input">
+										<input type="text" class="input required-url" id="website" placeholder="Your website URL" ng-model="input.website">
+										<span class="error-message">You need to enter a valid URL</span>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="label-text">
+										<label for="password">Password:</label>
+									</div>
+									<div class="form-input">
+										<input type="password" class="input required" id="password" placeholder="Your password" ng-model="input.password">
+										<span class="error-message">You need to enter your password</span>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="label-text">
+										<label for="password">Confirm Password:</label>
+									</div>
+									<div class="form-input">
+										<input type="password" class="input required" id="confirmation" placeholder="Your password" ng-model="input.confirmation">
+										<span class="error-message">You need to re-enter your password</span>
+									</div>
+								</div>
+								<div class="form-button">
+									<input type="submit" class="button-submit" value="Start my FREE 14-day Trial" onclick="scrollToError()">
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="testimonial-section">
+						<div class="testimonial">
+							<div class="image"><img src="/images/thumb01.jpg" height="116" width="116" alt="image description"></div>
+							<blockquote>
+								<q>Lorem ipsum dolor sit amet, cteturadsc elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. laboris nisi ut aliquip ex ea commodo consequat.</q>
+								<cite>
+									<span class="name">Mark Jones</span>
+									<span class="address">Maecenas pellentesque,</span>
+								</cite>
+							</blockquote>
+						</div>
+						<div class="testimonial">
+							<div class="image"><img src="/images/thumb02.jpg" height="116" width="116" alt="image description"></div>
+							<blockquote>
+								<q>Lorem ipsum dolor sit amet, cteturadsc elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. laboris nisi ut aliquip ex ea commodo consequat.</q>
+								<cite>
+									<span class="name">Jonathan Elliott</span>
+									<span class="address">Maecenas pellentesque,</span>
+								</cite>
+							</blockquote>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<footer id="footer" ng-controller="footer" ng-include="footer()"></footer>

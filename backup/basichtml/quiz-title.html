@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lead Quizzes</title>
+	<link media="all" rel="stylesheet" href="css/style.css">
+</head>
+<body class="inner">
+	<div id="wrapper">
+		<div id="main" class="same-height">
+			<aside id="sidebar" class="same">
+				<a href="#" class="nav-opener"><span class="icon icon-arrow-bottom"></span></a>
+				<div class="holder">
+					<div class="logo"><a href="/"><img src="/images/logo.png" height="21" width="185" alt="Lead Quizzes" class="logo-large"><img src="/images/logo-small.png" alt="Lead Quizzes" class="logo-small"></a></div>
+					<div class="nav-section">
+						<nav class="navigation">
+							<ul class="nav">
+								<li><a href="create-quiz.html"><span class="icon icon-view-thumb"></span> <span class="menu-text">Create Quiz</span></a></li>
+								<li class="active"><a href="quiz-title.html"><span class="icon icon-pencil"></span> <span class="menu-text">Configure</span></a></li>
+								<li><a href="outcomes.html"><span class="icon icon-sitemap"></span> <span class="menu-text">Outcomes</span></a></li>
+								<li><a href="questions.html"><span class="icon icon-view-list"></span> <span class="menu-text">Questions</span></a></li>
+								<li><a href="lead-capture.html"><span class="icon icon-users"></span> <span class="menu-text">Leads</span></a></li>
+								<li><a href="create-offer.html"><span class="icon icon-tag"></span> <span class="menu-text">Offer</span></a></li>
+								<li><a href="review-publish.html"><span class="icon icon-plane"></span> <span class="menu-text">Review &amp; Publish</span></a></li>
+							</ul>
+							<ul class="nav add">
+								<li><a href="dashboard-admin.html"><span class="icon icon-dashboard"></span> <span class="menu-text">Dashboard</span></a></li>
+								<li><a href="templates.html"><span class="icon icon-layout"></span> <span class="menu-text">Templates</span></a></li>
+								<li><a href="profile-page.html"><span class="icon icon-person"></span> <span class="menu-text">My Account</span></a></li>
+							</ul>
+						</nav>
+					</div>
+					<div class="user-section">
+						<a href="#" class="user-profile has-no-image">
+							<span class="icon icon-plus"></span>
+						</a>
+						<span class="welcome-text">Welcome: <strong class="name">Jenifer James</strong></span>
+						<span class="logout-link"><a href="/">Log Out</a></span>
+					</div>
+				</div>
+			</aside>
+			<div id="content" class="same">
+				<header class="page-heading">
+					<a href="#" class="link">Help &amp; Support</a>
+					<h1>New Quiz <small>/&nbsp; Enter basic informations about new quiz.</small></h1>
+				</header>
+				<div class="content-body">
+					<form action="#" class="quiz-title-form create-form validate-form">
+						<div class="form-row">
+							<div class="label-text">
+								<span class="counter">0/100</span>
+								<label for="qname">*Quiz Name:</label>
+							</div>
+							<div class="form-input">
+								<input type="text" class="input required" value="My first quiz" id="qname" data-max-length="100">
+								<span class="error-message">You need to enter title</span>
+							</div>
+						</div>
+						<div class="file-drop-section">
+							<div class="label-text">
+								<span class="label">Quiz Image:</span>
+							</div>
+							<div class="drop-box">
+								<span class="icon-upload">Upload Icon</span>
+								<strong class="title">Drop Image to Upload</strong>
+								<span>or <a href="/">click here</a></span>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="label-text">
+								<span class="counter">0/100</span>
+								<label for="qtitle">*Quiz Title:</label>
+							</div>
+							<div class="form-input">
+								<input type="text" class="input required" value="How Effective is Your Weight Loss Program?" id="qtitle" data-max-length="100">
+								<span class="error-message">You need to enter title</span>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="label-text">
+								<span class="counter">0/500</span>
+								<label for="description">*Quiz Description:</label>
+							</div>
+							<div class="form-input">
+								<textarea data-max-length="500" id="description" cols="3" rows="1" class="input-text required"></textarea>
+								<span class="error-message">You need to enter description</span>
+							</div>
+						</div>
+						<div class="two-columns">
+							<div class="column">
+								<div class="label-text"><label for="action-label">*Call to Action:</label></div>
+								<div class="form-input">
+									<select id="action-label" class="input required-select" data-select-model="button-id">
+										<option>Start My Quiz</option>
+										<option>View My Quiz</option>
+										<option>Show My Quiz</option>
+									</select>
+								</div>
+							</div>
+							<div class="column">
+								<div class="label-text"><label for="ganalytics">Google Analytics ID:</label></div>
+								<div class="form-input">
+									<input type="text" class="input" value="AB-3343543-4" id="ganalytics">
+								</div>
+							</div>
+						</div>
+						<div class="two-columns">
+							<div class="column">
+								<div class="label-text"><label for="integration">Segment:</label></div>
+								<div class="form-input">
+									<select id="integration" class="input required-select">
+										<option value="value">Do not use integration</option>
+										<option value="value">Do not use integration</option>
+										<option value="value">Do not use integration</option>
+									</select>
+								</div>
+							</div>
+							<div class="column">
+								<div class="two-cols">
+									<div class="col large-switch">
+										<div class="switch-label">Social Sharing:</div>
+										<div class="switch-menu">
+											<label class="switch"><input type="checkbox" checked="checked" hidden="hidden"></label>
+											<span class="label enable">Enabled</span>
+											<span class="label disable">Disabled</span>
+										</div>
+									</div>
+									<div class="col large-switch">
+										<div class="switch-label">Start Page:</div>
+										<div class="switch-menu">
+											<label class="switch"><input type="checkbox" checked="checked" hidden="hidden"></label>
+											<span class="label enable">Enabled</span>
+											<span class="label disable">Disabled</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-button">
+							<a href="#" class="button-back">Go Back</a>
+							<input type="submit" class="button-submit" value="Next Step">
+						</div>
+					</form>
+					<div class="live-section live-quiz-section">
+						<span class="ptitle">Live Preview</span>
+						<div class="live-box no-pad">
+							<div class="quiz-title-block">
+								<div class="title-image">
+									<img src="/images/image02.jpg" height="418" width="839" alt="image description">
+									<div class="overlay">
+										<strong class="title" id="title-box">How Effective Is Your Weight Loss Program?</strong>
+										<span class="desc" id="description-box">Take The Weight Loss Quiz And Determine How Much Weight You Can Lose.</span>
+									</div>
+								</div>
+								<footer>
+									<div class="button-holder">
+										<a href="#" class="button-more" id="button-id">Start My Quiz</a>
+									</div>
+									<span class="powered-text">Powered by <a href="/">LeadQuizzes</a></span>
+								</footer>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/jquery-2.1.4.min.js"><\/script>')</script>
+	<script type="text/javascript" src="js/jquery.main.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=1024" />
+	<title>Lead Quizzes</title>
+	<link media="all" rel="stylesheet" href="css/style.css">
+</head>
+<body class="inner">
+	<div id="wrapper">
+		<div id="main" class="same-height">
+			<aside id="sidebar" class="same">
+				<a href="#" class="nav-opener"><span class="icon icon-arrow-bottom"></span></a>
+				<div class="holder">
+					<div class="logo"><a href="/"><img src="/images/logo.png" height="21" width="185" alt="Lead Quizzes" class="logo-large"><img src="/images/logo-small.png" alt="Lead Quizzes" class="logo-small"></a></div>
+					<div class="nav-section">
+						<nav class="navigation">
+							<ul class="nav">
+								<li class="active"><a href="profile-page.html"><span class="icon icon-setting"></span> <span class="menu-text">Profile Settings</span></a></li>
+								<li><a href="subscription-page.html"><span class="icon icon-coins"></span> <span class="menu-text">Subscription</span></a></li>
+								<li><a href="integration-page.html"><span class="icon icon-browser"></span> <span class="menu-text">Integration</span></a></li>
+								<li><a href="payments-page.html"><span class="icon icon-vcard"></span> <span class="menu-text">Payments</span></a></li>
+							</ul>
+						</nav>
+					</div>
+					<div class="user-section">
+						<a href="#" class="user-profile has-no-image">
+							<span class="icon icon-plus"></span>
+						</a>
+						<span class="welcome-text">Welcome: <strong class="name">Jenifer James</strong></span>
+						<span class="logout-link"><a href="/">Log Out</a></span>
+					</div>
+				</div>
+			</aside>
+			<div id="content" class="same">
+				<header class="page-heading">
+					<div class="right-block">
+						<a href="#" class="link">Help &amp; Support</a>
+					</div>
+					<h1>Profile Settings <small>/&nbsp; Change your login credentials or subscription plan</small></h1>
+				</header>
+				<div class="dash-content profile-setting">
+					<form action="#" class="profile-setting-form validate-form create-form">
+						<div class="form-section">
+							<div class="form-row">
+								<div class="label-text"><label for="fname">Full Name:</label></div>
+								<div class="form-input">
+									<input type="text" class="input required" id="fname" placeholder="Dornubari Vizor">
+									<span class="error-message">You need to enter full name</span>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="label-text"><label for="email">Email Address:</label></div>
+								<div class="form-input">
+									<input type="email" class="input required-email" id="email" placeholder="dvizor@yazamo.com">
+									<span class="error-message">You need to enter email</span>
+								</div>
+							</div>
+						</div>
+						<div class="form-section">
+							<div class="form-row">
+								<div class="label-text"><label for="opass">Old Password::</label></div>
+								<div class="form-input">
+									<input type="password" class="input" id="opass" placeholder="**********">
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="label-text"><label for="newpass">New Password:</label></div>
+								<div class="form-input">
+									<input type="password" class="input" id="newpass">
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="label-text"><label for="newpass2"> Repeat New Password:</label></div>
+								<div class="form-input">
+									<input type="password" class="input" id="newpass2">
+								</div>
+							</div>
+							<div class="form-button">
+								<a href="#" class="button-default left">Upload Profile Image</a>
+								<input type="submit" class="button-default right" value="Update">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/jquery-2.1.4.min.js"><\/script>')</script>
+	<script type="text/javascript" src="js/jquery.main.js"></script>
+</body>
+</html>

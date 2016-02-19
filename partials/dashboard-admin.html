@@ -1,0 +1,109 @@
+<style>
+	.dropdown-menu {
+		background-color: transparent; border: none; box-shadow: none; -webkit-box-shadow: none;
+	}
+
+	.table-holder {
+		overflow-x: scroll;
+	}
+
+	.table-box {
+		width: 1100px;
+	}
+ </style>
+
+<div id="main" class="same-height">
+    <aside id="sidebar" class="same">
+        <a href="#" class="nav-opener"><span class="icon icon-arrow-bottom"></span></a>
+        <div class="holder">
+            <div class="logo"><a href="/"><img src="/images/logo.png" height="21" width="185" alt="Lead Quizzes" class="logo-large"><img src="/images/logo-small.png" alt="Lead Quizzes" class="logo-small"></a></div>
+            <div class="nav-section" ng-controller="navigation" ng-include="navigation()"></div>
+        </div>
+    </aside>
+    <div class="user-section" ng-controller="user" ng-include="user()"></div>
+	<div id="content" class="same">
+		<header class="page-heading">
+			<div class="right-block">
+				<a href="http://help.leadquizzes.com" target="_h" class="link">Help &amp; Support</a>
+			</div>
+			<h1>Templates <small>/&nbsp; Here you can manage the templates available to users</small></h1>
+		</header>
+		<div class="dash-content datatable-content row-view">
+			<div class="table-holder">
+				<div class="status-header">
+					<div class="right-block">
+						<div class="view">
+							<span>Select view:</span>
+							<a href="dashboard-tiles-admin" class="view-grid"><span class="icon icon-grid"></span></a>
+							<a href="dashboard-admin" class="view-row active"><span class="icon icon-rows"></span></a>
+						</div>
+						<div class="dropdown-menu">
+							<a class="button-default">Actions <span class="caret down"></span></a>
+							<div class="dropdown">
+								<ul id="actions">
+									<li id="action-no-quiz"><a>No Template Selected</a></li>
+									<li id="action-edit"><a style="cursor: pointer;" ng-click="editSelected()">Edit</a></li>
+									<li id="action-publish"><a style="cursor: pointer;" ng-click="publishSelected()">Activate</a></li>
+									<li id="action-unpublish"><a style="cursor: pointer;" ng-click="unpublishSelected()">De-activate</a></li>
+									<li id="action-delete"><a style="cursor: pointer;" ng-click="deleteSelected()">Delete</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div ng-include="'partials/alert.html'"></div>
+					</div>
+				</div>
+				<div class="table-box">
+					<table id="datatable" datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumnDefs">
+						<thead>
+							<tr>
+								<th></th>
+								<th>Template Name</th>
+								<th>Industry</th>
+								<th>Status</th>
+								<th>Date Created</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="quiz in quizzes" style="text-align: center;" data-quizId="{{quiz.quizId}}">
+								<td><input jcf type="checkbox"></td>
+								<td>{{quiz.name}}</td>
+								<td>{{quiz.segmentid}}</td>
+								<td>{{quiz.quizStatusName == "Published" ? "Active" : "Inactive"}}</td>
+								<td>{{quiz.created|date:'MM/dd/yyyy'}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="popup-holder">
+	<div class="lightbox share-quiz-box" id="create-new-quiz">
+		<form class="quiz-title-form create-form validate-form" action="#" novalidate="novalidate">
+			<div class="form-row">
+				<div class="label-text">
+					<span class="cb-copy">Copy to clipboard</span>
+					<label for="qtitle">Quiz URL:</label>
+				</div>
+				<div class="form-input">
+					<input type="text" id="qtitle" value="https://picjumbo.com/?s=running" class="input copy-text">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="label-text">
+					<span class="cb-copy copied">Copied</span>
+					<label for="description">Embed Code:</label>
+				</div>
+				<div class="form-input">
+					<textarea class="input-text copy-text" rows="1" cols="3" id="description"><iframe width="420" height="315" src="https://www.youtube.com/embed/djV11Xbc914" frameborder="0" allowfullscreen></iframe></textarea>
+				</div>
+			</div>
+			<div class="form-button">
+				<input type="submit" value="Share Quiz" class="button-share">
+			</div>
+		</form>
+	</div>
+</div>
